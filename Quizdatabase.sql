@@ -20,35 +20,35 @@
 	name varchar(255) NOT NULL,
 	password varchar(255) NOT NULL,
 	groups varchar(255) NOT NULL,
-	Accountlevel varchar(255) NOT NULL
+	accountLevel varchar(255) NOT NULL
 	);
 	
 	CREATE TABLE Quiz (
-	QuizID int NOT NUll AUTO_INCREMENT Primary KEY,
-	QuestionID int NOT NUll,
-	DateCreated TIMESTAMP NOT NULL,
-	DateFinished TIMESTAMP NOT NULL,
+	quizId int NOT NUll AUTO_INCREMENT Primary KEY,
+	questionId int NOT NUll,
+	dateCreated TIMESTAMP NOT NULL,
+	dateFinished TIMESTAMP NOT NULL,
 	times TIME,
 	userAnswer SMALLINT NOT NULL,
 	score SMALLINT NOT NULL
 	);
 	
 	CREATE TABLE Question(
-	QuestionID int NOT NULL PRIMARY KEY,
-	AnswerID int NOT NULL,
-	Question LONGTEXT NOT NULL
+	questionId int NOT NULL PRIMARY KEY,
+	answerId int NOT NULL,
+	question LONGTEXT NOT NULL
 	);
 	
 	CREATE TABLE Answers(
-	AnswerID INT NOT NULL PRIMARY KEY,
-	Answer TEXT NOT NULL,
-	Correct BOOLEAN NOT NULL
+	answerId INT NOT NULL PRIMARY KEY,
+	answer TEXT NOT NULL,
+	correct BOOLEAN NOT NULL
 	);
 	
 	CREATE TABLE QuizTanken(
-	QuizTakenMail VARCHAR(100) NOT NUll Primary KEY,
-	QuizTakenID SMALLINT NOT NULL,
-	Results VARCHAR(10) NOT NULL
+	quizTakenMail VARCHAR(100) NOT NUll Primary KEY,
+	quizTakenId SMALLINT NOT NULL,
+	results VARCHAR(10) NOT NULL
 	);
 	
 	
