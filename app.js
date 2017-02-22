@@ -19,3 +19,6 @@ var server = app.listen(3000, function() {
 
 //npm install express --save
 //npm install ejs
+
+// För att installera alla moduler använder ni package.json filen
+// För att installera skriv npm install package.json --save
