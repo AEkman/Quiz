@@ -20,5 +20,4 @@ function Connection() {
         });
     };
 }
-
 module.exports = new Connection();
