@@ -5,6 +5,7 @@ module.exports = {
 
         app.get('/user/', function (req, res) {
             database.get(res);
+            res.render('default', {title: 'User'});
         })
     }
 };
