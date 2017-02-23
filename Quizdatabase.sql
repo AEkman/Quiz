@@ -13,6 +13,7 @@
 	CREATE SCHEMA IF NOT EXISTS quizdb;
 	USE quizdb;
 
+    DROP TABLE IF EXISTS user;
 
 	CREATE TABLE user (
 	mail VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -21,7 +22,9 @@
 	groups VARCHAR(255) NOT NULL,
 	accountLevel SMALLINT(255) NOT NULL
 	);
-	
+
+	DROP TABLE IF EXISTS quiz;
+
 	CREATE TABLE quiz (
 	quizId INT NOT NUll AUTO_INCREMENT Primary KEY,
 	questionId INT NOT NUll,
@@ -31,19 +34,25 @@
 	userAnswer SMALLINT NOT NULL,
 	score SMALLINT NOT NULL
 	);
-	
+
+	DROP TABLE IF EXISTS question;
+
 	CREATE TABLE question(
 	questionId INT NOT NULL PRIMARY KEY,
 	answerId INT NOT NULL,
 	question LONGTEXT NOT NULL
 	);
-	
+
+	DROP TABLE IF EXISTS answer;
+
 	CREATE TABLE answers(
 	answerId INT NOT NULL PRIMARY KEY,
 	answer TEXT NOT NULL,
 	correct BOOLEAN NOT NULL
 	);
-	
+
+	DROP TABLE IF EXISTS quiztaken;
+
 	CREATE TABLE quiztaken(
 	quizTakenMail VARCHAR(100) NOT NUll Primary KEY,
 	quizTakenId SMALLINT NOT NULL,
