@@ -7,10 +7,10 @@ function Connection() {
         this.pool = mysql.createPool({
             connectionLimit: 10,
             host: 'localhost',
-            user: 'root',
-            password : '1234',
+            user: 'user',
+            password : 'user',
             port: 3306,
-            database: 'quiz'
+            database: 'quizdb'
         });
     };
 
