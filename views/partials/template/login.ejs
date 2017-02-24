@@ -1,22 +1,12 @@
-<div class="login">
-    <div class="login-screen">
-        <div class="app-title">
-            <h1>Login</h1>
-        </div>
-
-        <div class="login-form">
-            <div class="control-group">
-                <input type="email" name="email"  class="login-field" value="" placeholder="username" id="login-name" required>
-                <label class="login-field-icon fui-user" for="login-name"></label>
-            </div>
-
-            <div class="control-group">
-                <input type="password" name="password" class="login-field" value="" placeholder="password" id="login-pass" required>
-                <label class="login-field-icon fui-lock" for="login-pass"></label>
-            </div>
-
-            <a class="btn btn-primary btn-large btn-block" href="">login</a>
-            <a class="login-link" href="#">Lost your password?</a>
-        </div>
+<h2 class="page-header">Account Login</h2>
+<form method=post" action="/user">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" placeholder="Username">
     </div>
-</div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

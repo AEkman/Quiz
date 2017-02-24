@@ -2,24 +2,22 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
     <% include partials/template/head.ejs %>
-    <% include partials/template/navigationcreator.ejs %>
 </head>
 
 <body class="<%= classname %>">
 <% include partials/template/header.ejs %>
 
 <div class="container">
+    <% include partials/template/navigationadmin.ejs %>
     <div class="row">
         <h1>Welcome Admin!</h1>
-        <p>You have ultra powers in here!</p>
-        <p>You are on page <%= title %></p>
     </div><!-- span12 -->
+    <% include partials/template/footer.ejs %>
 </div><!-- container -->
 
 
-<% include partials/content/creators.ejs %>
+
 <% include partials/template/jsdefaults.ejs %>
 </body>
 </html>

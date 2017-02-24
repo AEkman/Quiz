@@ -32,3 +32,10 @@ exports.test = function(req, res) {
         classname: 'test'
     });
 }
+
+exports.settings = function(req, res) {
+    res.render('settings', {
+        title: 'Settings',
+        classname: 'settings'
+    });
+}
