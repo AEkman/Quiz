@@ -11,4 +11,4 @@ npm install mysql --save
 
 För att installera alla moduler använder ni package.json filen
 
-För att installera skriv npm install package.json --save
+För att installera skriv npm install
