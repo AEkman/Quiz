@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <% include partials/template/head.ejs %>
+</head>
+<body class="<%= classname %>">
+<% include partials/template/header.ejs %>
+
+<div class="container">
+    <div class="row">
+            <img src="images/quizMakerLogo.png" class="img-responsive" alt="Quiz Logo">
+            <h1>Quiz App</h1>
+            <p>You are on page <%= title %></p>
+            <div>
+              <% include partials/template/login.ejs %>
+    </div><!-- row -->
+</div><!-- container -->
+
+  <% include partials/template/footer.ejs %>
+  <% include partials/template/jsdefaults.ejs %>
+</body>
+</html>
