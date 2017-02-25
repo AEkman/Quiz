@@ -17,6 +17,7 @@ app.get('/user', routes.user);
 app.get('/creator', routes.creator);
 app.get('/admin', routes.admin);
 app.get('/settings', routes.settings);
+app.get('/test/:name', routes.test);
 app.get('/test', routes.test);
 
 app.get('*', function(reg, res) {

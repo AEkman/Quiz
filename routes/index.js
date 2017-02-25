@@ -29,7 +29,8 @@ exports.admin = function(req, res) {
 exports.test = function(req, res) {
     res.render('test', {
         title: 'Test',
-        classname: 'test'
+        classname: 'test',
+        person: 'req.params.name'
     });
 }
 
