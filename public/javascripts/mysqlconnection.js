@@ -1,14 +1,23 @@
-var mysql = require("mysql");
+var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'user',
-  password: 'user'
-  database: 'quizdb',
-  port: '3306'
-});
+function Connection() {
+    this.pool = null;
 
-connection.connect(function(err) {
-    if (err) throw err
-    console.log('You are now connected...')
-});
+    this.init = function() {
+        this.pool = mysql.createPool({
+            connectionLimit: 10,
+            host: 'localhost',
+            user: 'user',
+            password : 'user',
+            port: 3306,
+            database: 'quizdb'
+        });
+    };
+
+    this.acquire = function(callback) {
+        this.pool.getConnection(function(err, connection) {
+            callback(err, connection);
+        });
+    };
+}
+module.exports = new Connection();

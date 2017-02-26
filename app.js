@@ -3,6 +3,17 @@ var body = require('body-parser');
 
 // Start express
 var app = express();
+var sqlRoutes = require('./public/javascripts/databaseRoutes');
+var connection = require('./public/javascripts/mysqlconnection');
+var bodyparser = require('body-parser');
+var databasRoutes = require('./public/javascripts/database');
+
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
+
+connection.init();
+sqlRoutes.configure(app);
+
 
 // Set static folder
 app.use(express.static(__dirname + '/public'));
@@ -70,7 +81,7 @@ app.post('/settings', function(req, res) {
         group: req.body.group,
         accountlevel: req.body.accountlevel
     };
-
+    databasRoutes.createUser(user, res);
     console.log(user);
 });
 
