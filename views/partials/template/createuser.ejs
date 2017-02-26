@@ -18,7 +18,11 @@
     </div>
     <div class="form-group">
         <label>Account Level</label>
-        <input type="number" name="accountLevel" value="accountLevel" class="form-control" placeholder="Account Level">
+        <select name="accountLevel">
+            <option value="1">User</option>
+            <option value="2">Creator</option>
+            <option value="3">Admin</option>
+        </select>
     </div>
     <button type="submit" class="btn btn-default">Create User</button>
 </form>
