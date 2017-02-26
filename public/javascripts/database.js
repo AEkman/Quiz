@@ -16,8 +16,9 @@ function User() {
     };
 
     this.createUser = function (user, res) {
+        console.log(user);
         connection.acquire(function (err, con) {
-            con.query("INSERT INTO user VALUES ?", user, function (err) {
+            con.query("INSERT INTO user SET ?", user, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
@@ -28,7 +29,6 @@ function User() {
                 }
             });
         });
-        console.log('createUser funktionen körs.')
     };
 }
 module.exports = new User();

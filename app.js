@@ -1,19 +1,14 @@
 var express = require('express');
 var body = require('body-parser');
+var connection = require('./public/javascripts/mysqlconnection');
+var bodyparser = require('body-parser');
+var databaseFunctions = require('./public/javascripts/database');
 
 // Start express
 var app = express();
-var sqlRoutes = require('./public/javascripts/databaseRoutes');
-var connection = require('./public/javascripts/mysqlconnection');
-var bodyparser = require('body-parser');
-var databasRoutes = require('./public/javascripts/database');
-
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
-
 connection.init();
-sqlRoutes.configure(app);
-
 
 // Set static folder
 app.use(express.static(__dirname + '/public'));
@@ -73,16 +68,16 @@ app.get('/settings', function(req, res) {
     });
 });
 
+
 app.post('/settings', function(req, res) {
     var user = {
-        mailadress: req.body.mailadress,
-        username: req.body.username,
+        mail: req.body.mail,
+        name: req.body.name,
         password: req.body.password,
-        group: req.body.group,
-        accountlevel: req.body.accountlevel
+        groups: req.body.groups,
+        accountLevel: req.body.accountLevel
     };
-    databasRoutes.createUser(user, res);
-    console.log(user);
+    databaseFunctions.createUser(user, res);
 });
 
 /* User */
