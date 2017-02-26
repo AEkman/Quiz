@@ -1,24 +1,24 @@
 <h2 class="page-header">Create User</h2>
-<form method=post" action="/createuser">
+<form method=post" action="/settings">
     <div class="form-group">
         <label>Mailadress</label>
-        <input type="text" class="form-control" placeholder="Mailadress">
+        <input type="text" name="mailadress" value="mailadress" class="form-control" placeholder="Mailadress">
     </div>
     <div class="form-group">
         <label>Username</label>
-        <input type="text" class="form-control" placeholder="Username">
+        <input type="text" name="username" value="username" class="form-control" placeholder="Username">
     </div>
     <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" value="password" class="form-control" placeholder="Password">
     </div>
     <div class="form-group">
         <label>Group</label>
-        <input type="text" class="form-control" placeholder="Group">
+        <input type="text" name="group" value="group" class="form-control" placeholder="Group">
     </div>
     <div class="form-group">
         <label>Account Level</label>
-        <input type="text" class="form-control" placeholder="Account Level">
+        <input type="text" name="accountlevel" value="accountlevel" class="form-control" placeholder="Account Level">
     </div>
     <button type="submit" class="btn btn-default">Create User</button>
 </form>

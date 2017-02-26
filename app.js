@@ -1,5 +1,9 @@
 var express = require('express');
+var bodyparser = require('body-parser');
+
+// Start express
 var app = express();
+
 var routes = require('./routes');
 
 // Set static folder
