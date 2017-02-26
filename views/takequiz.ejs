@@ -6,15 +6,18 @@
 </head>
 
 <body class="<%= classname %>">
+<% include partials/template/header.ejs %>
 
 <div class="container">
+    <% include partials/template/navigationadmin.ejs %>
     <div class="row">
-        <% include partials/template/navigationadmin.ejs %>
-        <h1>Settings</h1>
-        <% include partials/template/createuser.ejs %>
+        <h1>Take Quiz</h1>
+        <p>You are on page <%= title %></p>
     </div><!-- span12 -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
+
+
 
 <% include partials/template/jsdefaults.ejs %>
 </body>
