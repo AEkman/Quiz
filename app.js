@@ -1,10 +1,8 @@
 var express = require('express');
-var bodyparser = require('body-parser');
+var body = require('body-parser');
 
 // Start express
 var app = express();
-
-var routes = require('./routes');
 
 // Set static folder
 app.use(express.static(__dirname + '/public'));
@@ -15,18 +13,59 @@ app.set('view engine', 'ejs');
 // Global variables
 app.locals.pageTitle = "Quiz Maker";
 
-// Routes called via function in routes/index.js
-app.get('/', routes.index);
-app.get('/user', routes.user);
-app.get('/creator', routes.creator);
-app.get('/admin', routes.admin);
-app.get('/settings', routes.settings);
-app.get('/test/:name', routes.test);
-app.get('/test', routes.test);
-
-app.get('*', function(reg, res) {
-    res.send('Page not found 404');
+// Routes
+/* Home */
+app.get('/', function(req, res) {
+    res.render('index', {
+        title: 'Home',
+        classname: 'home'
+    });
 });
+
+/* User */
+app.get('/user', function(req, res) {
+    res.render('user', {
+        title: 'User',
+        classname: 'user'
+    });
+});
+
+/* Creator */
+app.get('/creator', function(req, res) {
+    res.render('creator', {
+        title: 'Creator',
+        classname: 'creator'
+    });
+});
+
+/* Admin */
+app.get('/admin', function(req, res) {
+    res.render('admin', {
+        title: 'Admin',
+        classname: 'admin'
+    });
+});
+
+/* Settings */
+app.get('/settings', function(req, res) {
+    res.render('settings', {
+        title: 'Settings',
+        classname: 'settings'
+    });
+});
+
+app.post('/settings', function(req, res) {
+    var user = {
+        mailadress: req.body.mailadress,
+        username: req.body.username,
+        password: req.body.password,
+        group: req.body.group,
+        accountlevel: req.body.accountlevel
+    };
+
+    console.log(user);
+});
+
 
 // Start server on port 3000
 app.set('port', process.env.PORT || 3000); // use port 3000 unless there exists a preconfigured port
