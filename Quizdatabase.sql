@@ -60,5 +60,14 @@
 	quizTakenId SMALLINT NOT NULL,
 	results SMALLINT NOT NULL
 	);
+
+	DROP TABLE IF EXIST midResult;
+
+	CREATE TABLE midResult {
+	answerId INT NOT NULL PRIMARY KEY,
+	quizTakenId SMALLINT NOT NULL,
+	results SMALLINT NOT NULL
+	};
+
 	
 	
