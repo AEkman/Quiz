@@ -80,6 +80,37 @@ app.post('/settings', function(req, res) {
     databaseFunctions.createUser(user, res);
 });
 
+app.post('/createquiz', function (req, res) {
+    var question = {
+        answerId: req.body.answerId,
+        question: req.body.question
+    };
+    var answer = {
+        answerId: req.body.answerId,
+        answer: req.body.answer,
+        correct: req.body.correct
+    };
+    databaseFunctions.createQuestion(question, res);
+    databaseFunctions.createAnswer(answer, res);
+});
+
+// app.post('/question', function (req, res) {
+//     var question = {
+//         answerId: req.body.answerId,
+//         question: req.body.question
+//     };
+//     databaseFunctions.createQuestion(question, res);
+// });
+//
+// app.post('/answer', function (req, res) {
+//     var question = {
+//         answerId: req.body.answerId,
+//         answer: req.body.answer,
+//         correct: req.body.correct
+//     };
+//     databaseFunctions.createAnswer(question, res);
+// });
+
 /* User */
 app.get('/user', function(req, res) {
     res.render('user', {
