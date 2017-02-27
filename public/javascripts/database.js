@@ -30,5 +30,37 @@ function User() {
             });
         });
     };
+
+    this.createQuestion = function (question, res) {
+        console.log(question);
+        connection.acquire(function (err, con) {
+            con.query("INSERT INTO question SET ?", question, function (err) {
+                con.release();
+                if(err) {
+                    console.log(err);
+                    res.send({status: 1, message: 'Quest creaton failed'});
+                } else {
+                    console.log('Quest created successfully');
+                    res.send({status: 0, message: 'Quest created successfully'});
+                }
+            });
+        });
+    };
+
+    this.createAnswer = function (answer, res) {
+        console.log(answer);
+        connection.acquire(function (err, con) {
+            con.query("INSERT INTO answers SET ?", answer, function (err) {
+                con.release();
+                if(err) {
+                    console.log(err);
+                    res.send({status: 1, message: 'Answer creaton failed'});
+                } else {
+                    console.log('Answer created successfully');
+                    res.send({status: 0, message: 'Answer created successfully'});
+                }
+            });
+        });
+    };
 }
 module.exports = new User();

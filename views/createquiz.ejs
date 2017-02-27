@@ -14,10 +14,18 @@
         <h1>Create Quiz!</h1>
         <p>Let's create some ultra cool quizes!</p>
         <p>You are on page <%= title %></p>
+            <% include partials/template/createquestion.ejs %>
+            <% include partials/template/createAnswer.ejs %>
     </div><!-- span12 -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
 
+<!--<script>-->
+    <!--function submitForms() {-->
+        <!--document.forms["questionForm"].submit();-->
+        <!--document.forms["answerForm"].submit();-->
+    <!--}-->
+<!--</script>-->
 
 
 <% include partials/template/jsdefaults.ejs %>
