@@ -40,8 +40,10 @@
 	CREATE TABLE question(
 	questionId INT NOT NULL PRIMARY KEY,
 	answerId INT NOT NULL,
-	question LONGTEXT NOT NULL
+	question LONGTEXT NOT NULL,
+	questPic MEDIUMBLOB NOT NULL
 	);
+	/* added questpic as separate, due to possibility to storage pictures/diagrams at size of 16 mb at max */
 
 	DROP TABLE IF EXISTS answer;
 
