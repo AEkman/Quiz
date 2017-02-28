@@ -24,13 +24,12 @@
 
 	CREATE TABLE quiz (
 	quizId INT NOT NUll AUTO_INCREMENT PRIMARY KEY,
-	questionId INT NOT NUll,
 	dateCreated TIMESTAMP NOT NULL,
 	dateFinished TIMESTAMP NOT NULL,
 	times TIME,
 	userAnswer SMALLINT NOT NULL,
 	score SMALLINT NOT NULL,
-	QuizMail VARCHAR(255),
+	QuizMail VARCHAR(255) NOT NULL,
 	FOREIGN KEY (QuizMail) REFERENCES user(mail)
 	);
 	
@@ -44,7 +43,7 @@
 	question LONGTEXT NOT NULL,
 	questPic MEDIUMBLOB NOT NULL,
 	questionQuizid INT NOT NULL,
-	FOREIGN KEY (questionQuizId) REFERENCES quiz(questionId)
+	FOREIGN KEY (questionQuizid) REFERENCES quiz(quizId)
 
 	);
 	
@@ -69,7 +68,6 @@
 	quizTakenQid INT NOT NULL,
 	results SMALLINT NOT NULL,
 	ElapTimes DATETIME
-
 
 	);
 	
