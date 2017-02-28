@@ -18,7 +18,7 @@
 	accountLevel VARCHAR(255) NOT NULL
 	);
 	
-	INSERT INTO user(mail, name, password, groups,accountLevel) VALUES (testmail, testnamn, password, groups,accountLevel);
+	-- INSERT INTO user(mail, name, password, groups,accountLevel) VALUES (testmail@grod, testnamn, password, groups,accountLevel);
 	
 	DROP TABLE IF EXISTS quiz;
 
@@ -74,4 +74,14 @@
 	);
 	
 	
+/*
+	DROP TABLE IF EXIST midResult;
 
+	CREATE TABLE midResult {
+	answerId INT NOT NULL PRIMARY KEY,
+	quizTakenId SMALLINT NOT NULL,
+	results SMALLINT NOT NULL
+	};
+
+	added new table, name can be changet later on for mor accurate one. */
+	
