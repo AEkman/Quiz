@@ -1,15 +1,10 @@
-/*
-   STR_TO_DATE('dd,mm,åååå','%d,%m,%Y')
-
-   -- Full path till create den här file.
-   source C:\Users\Daniel\Documents\GitHub\MYSQL QUIZ\Quizdatabase.sql
-*/
 
 
     DROP SCHEMA IF EXISTS quizdb;
 
 	
 /* */
+
 	CREATE SCHEMA IF NOT EXISTS quizdb;
 	USE quizdb;
 
@@ -20,54 +15,63 @@
 	name VARCHAR(255) NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	groups VARCHAR(255) NOT NULL,
-	accountLevel SMALLINT(255) NOT NULL
+	accountLevel VARCHAR(255) NOT NULL
 	);
-
+	
+	INSERT INTO user(mail, name, password, groups,accountLevel) VALUES (testmail, testnamn, password, groups,accountLevel);
+	
 	DROP TABLE IF EXISTS quiz;
 
 	CREATE TABLE quiz (
-	quizId INT NOT NUll AUTO_INCREMENT Primary KEY,
+	quizId INT NOT NUll AUTO_INCREMENT PRIMARY KEY,
 	questionId INT NOT NUll,
 	dateCreated TIMESTAMP NOT NULL,
 	dateFinished TIMESTAMP NOT NULL,
 	times TIME,
 	userAnswer SMALLINT NOT NULL,
-	score SMALLINT NOT NULL
+	score SMALLINT NOT NULL,
+	QuizMail VARCHAR(255),
+	FOREIGN KEY (QuizMail) REFERENCES user(mail)
 	);
+	
+	-- INSERT INTO user(quizId, questionId, dateCreated, dateFinished,times, userAnswer, score,QuizMail) VALUES (1234, testquest, 2017.01.01,2017.01.02 ,20:20, 20, 100,);
 
 	DROP TABLE IF EXISTS question;
 
 	CREATE TABLE question(
-	questionId INT NOT NULL PRIMARY KEY,
+	questionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	answerId INT NOT NULL,
 	question LONGTEXT NOT NULL,
-	questPic MEDIUMBLOB NOT NULL
+	questPic MEDIUMBLOB NOT NULL,
+	questionQuizid INT NOT NULL,
+	FOREIGN KEY (questionQuizId) REFERENCES quiz(questionId)
+
 	);
+	
 	/* added questpic as separate, due to possibility to storage pictures/diagrams at size of 16 mb at max */
 
 	DROP TABLE IF EXISTS answer;
 
 	CREATE TABLE answers(
-	answerId INT NOT NULL PRIMARY KEY,
+	answerId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	answer TEXT NOT NULL,
-	correct BOOLEAN NOT NULL
+	correct BOOLEAN NOT NULL,
+	answerQuestionid INT NOT NULL,
+	FOREIGN KEY (answerQuestionid) REFERENCES question(questionId)
+	
 	);
 
 	DROP TABLE IF EXISTS quiztaken;
 
 	CREATE TABLE quiztaken(
-	quizTakenMail VARCHAR(100) NOT NUll Primary KEY,
-	quizTakenId SMALLINT NOT NULL,
-	results SMALLINT NOT NULL
+	quiztakenId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	quizTakenMail VARCHAR(100) NOT NULL,
+	quizTakenQid INT NOT NULL,
+	results SMALLINT NOT NULL,
+	ElapTimes DATETIME
+
+
 	);
-
-	DROP TABLE IF EXIST midResult;
-
-	CREATE TABLE midResult {
-	answerId INT NOT NULL PRIMARY KEY,
-	quizTakenId SMALLINT NOT NULL,
-	results SMALLINT NOT NULL
-	};
-
 	
 	
+
