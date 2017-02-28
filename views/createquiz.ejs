@@ -14,18 +14,32 @@
         <h1>Create Quiz!</h1>
         <p>Let's create some ultra cool quizes!</p>
         <p>You are on page <%= title %></p>
-            <% include partials/template/createquestion.ejs %>
-            <% include partials/template/createAnswer.ejs %>
+
+        <form method="post"  action="/createQuiz">
+            <div class="form-group">
+                <h2>Quiz namn:</h2>
+            </div>
+            <div class="form-group">
+                <input type="text" namn="quizName" class="form-control" placeholder="Quiz Name" required>
+            </div>
+            <div class="form-group">
+                <h2>Question</h2>
+                <% include partials/template/createquestion.ejs %>
+            </div>
+            <div class="form-group">
+                <h2>Answers</h2>
+                <% include partials/template/createAnswer.ejs %>
+            </div>
+            <div class="form-group">
+                <button type="button"class="btn btn-primary">Add question</button>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Create Quiz</button>
+            </div>
+            </form>
     </div><!-- span12 -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
-
-<!--<script>-->
-    <!--function submitForms() {-->
-        <!--document.forms["questionForm"].submit();-->
-        <!--document.forms["answerForm"].submit();-->
-    <!--}-->
-<!--</script>-->
 
 
 <% include partials/template/jsdefaults.ejs %>

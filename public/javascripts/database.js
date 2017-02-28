@@ -41,7 +41,7 @@ function User() {
                     res.send({status: 1, message: 'Quest creaton failed'});
                 } else {
                     console.log('Quest created successfully');
-                    res.send({status: 0, message: 'Quest created successfully'});
+                    // res.send({status: 0, message: 'Quest created successfully'});
                 }
             });
         });
@@ -57,7 +57,23 @@ function User() {
                     res.send({status: 1, message: 'Answer creaton failed'});
                 } else {
                     console.log('Answer created successfully');
-                    res.send({status: 0, message: 'Answer created successfully'});
+                    // res.send({status: 0, message: 'Answer created successfully'});
+                }
+            });
+        });
+    };
+
+    this.createQuiz = function (quiz, res) {
+        console.log(quiz);
+        connection.acquire(function (err, con) {
+            con.query("INSERT INTO answers SET ?", quiz, function (err) {
+                con.release();
+                if(err) {
+                    console.log(err);
+                    res.send({status: 1, message: 'Quiz creaton failed'});
+                } else {
+                    console.log('Quiz created successfully');
+                    res.send({status: 0, message: 'Quiz created successfully'});
                 }
             });
         });
