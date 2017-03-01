@@ -1,5 +1,6 @@
 
 
+
     DROP SCHEMA IF EXISTS quizdb;
 
 	
@@ -20,17 +21,16 @@
 	
 	-- INSERT INTO question
 	
+
 	DROP TABLE IF EXISTS quiz;
+
 
 	CREATE TABLE quiz (
 	quizId INT NOT NUll AUTO_INCREMENT PRIMARY KEY,
 	dateCreated TIMESTAMP NOT NULL,
-	dateFinished TIMESTAMP NOT NULL,
-	times TIME,
-	-- userAnswer SMALLINT NOT NULL,
+	dateFinished DATE NOT NULL,
+	times INT,
 	score SMALLINT NOT NULL,
-	QuizMail VARCHAR(255) NOT NULL,
-	FOREIGN KEY (QuizMail) REFERENCES user(mail)
 	);
 -- INSERT INTO quiz VALUES(1, 2007.10.01, 2012.10.09, 12:27, 100, daniel@com);
 

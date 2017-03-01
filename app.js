@@ -84,23 +84,14 @@ app.post('/settings', function(req, res) {
 });
 /*  send input data from Create quiz folder seding to create question, create answer */
 app.post('/createQuiz', function (req, res) {
-    var question = {
-        answerId: req.body.answerId,
-        question: req.body.question
-     };
-    var answer = {
-        answerId: req.body.answerId,
-        answer: req.body.answer,
-        correct: req.body.correct
-    };
     var quiz = {
-
-    };
-    databaseFunctions.createQuestion(question, res);
-    databaseFunctions.createAnswer(answer, res);
+        quizName: req.body.quizName,
+        dateFinished: req.body.dateFinished,
+        times: req.body.times,
+        score: req.body.score
+     };
+    databaseFunctions.createQuiz(quiz, res);
 });
-
-
 
 /* User */
 app.get('/user', function(req, res) {
