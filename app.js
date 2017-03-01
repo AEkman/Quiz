@@ -68,7 +68,7 @@ app.get('/settings', function(req, res) {
     });
 });
 
-
+/*  send the input data from settings --> createUser --> database */
 app.post('/settings', function(req, res) {
     var user = {
         mail: req.body.mail,
@@ -79,7 +79,7 @@ app.post('/settings', function(req, res) {
     };
     databaseFunctions.createUser(user, res);
 });
-
+/*  send input data from Create quiz folder seding to create question, create answer */
 app.post('/createQuiz', function (req, res) {
     var question = {
         answerId: req.body.answerId,
