@@ -9,7 +9,7 @@
 	USE quizdb;
 
     DROP TABLE IF EXISTS user;
-    /* USER IS COMPLETT */
+    /* USER IS COMPLETE */
 	CREATE TABLE user (
 	mail VARCHAR(255) NOT NULL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
@@ -18,7 +18,7 @@
 	accountLevel VARCHAR(255) NOT NULL
 	);
 	
-	-- INSERT INTO user(mail, name, password, groups,accountLevel) VALUES (testmail@grod, testnamn, password, groups,accountLevel);
+	-- INSERT INTO question
 	
 	DROP TABLE IF EXISTS quiz;
 
@@ -32,8 +32,7 @@
 	QuizMail VARCHAR(255) NOT NULL,
 	FOREIGN KEY (QuizMail) REFERENCES user(mail)
 	);
-	
-	-- INSERT INTO user(quizId, questionId, dateCreated, dateFinished,times, userAnswer, score,QuizMail) VALUES (1234, testquest, 2017.01.01,2017.01.02 ,20:20, 20, 100,);
+-- INSERT INTO quiz VALUES(1, 2007.10.01, 2012.10.09, 12:27, 100, daniel@com);
 
 	DROP TABLE IF EXISTS question;
 
@@ -71,14 +70,4 @@
 	);
 	
 	
-/*
-	DROP TABLE IF EXIST midResult;
 
-	CREATE TABLE midResult {
-	answerId INT NOT NULL PRIMARY KEY,
-	quizTakenId SMALLINT NOT NULL,
-	results SMALLINT NOT NULL
-	};
-
-	added new table, name can be changet later on for mor accurate one. */
-	
