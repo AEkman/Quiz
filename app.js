@@ -92,8 +92,15 @@ app.get('/admin', function(req, res) {
     });
 });
 
+app.get('/createquizquestions', function(req, res) {
+    res.render('createquizquestions', {
+        title: 'createquizquestions',
+        classname: 'createquizquestions'
+    });
+});
+
 /*  send the input data from settings --> createUser --> database */
-app.post('/settings', function(req) {
+app.post('/settings', function(req, ress) {
     var user = {
         mail: req.body.mail,
         name: req.body.name,
@@ -101,7 +108,7 @@ app.post('/settings', function(req) {
         groups: req.body.groups,
         accountLevel: req.body.accountLevel
     };
-    databaseFunctions.createUser(user);
+    databaseFunctions.createUser(user, ress);
 });
 /*  send input data from Create quiz form */
 app.post('/createquiz', function (req, res) {
@@ -112,6 +119,23 @@ app.post('/createquiz', function (req, res) {
         score: req.body.score
     };
     databaseFunctions.createQuiz(quiz, res);
+});
+var questionID = 1;
+var answerID = 1;
+
+app.post('/createquizquestions', function (req, res) {
+   var question = {
+       question: req.body.question,
+       questionQuizid: questionID
+   };
+   var answer = {
+       answer: req.body.answer,
+       correct: req.body.correct,
+       answerQuestionid: answerID
+   };
+   databaseFunctions.createQuestion(question);
+   databaseFunctions.createAnswer(answer, res);
+
 });
 
 // Start server on port 3000

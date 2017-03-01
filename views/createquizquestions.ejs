@@ -15,9 +15,10 @@
         <p>Let's create some ultra cool quizes!</p>
         <p>You are on page <%= title %></p>
 
-        <form method="post"  action="/createQuiz">
+        <form method="post"  action="/createquizquestions">
             <div class="form-group">
-                <% include partials/template/createquiz.ejs %>
+                <% include partials/template/createquestion.ejs %>
+                <% include partials/template/createAnswer.ejs %>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default btn-lg">Create Quiz</button>
