@@ -49,17 +49,17 @@ function User() {
     };
 
     //Create quest funktion
-    this.createQuestion = function (question, res) {
+    this.createQuestion = function (question) {
         console.log(question);
         connection.acquire(function (err, con) {
             con.query("INSERT INTO question SET ?", question, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'Quest creation failed'});
+                    // res.send({status: 1, message: 'Quest creation failed'});
                 } else {
                     console.log('Quest created successfully');
-                    res.send({status: 0, message: 'Quest created successfully'});
+                    // res.send({status: 0, message: 'Quest created successfully'});
                 }
             });
         });
