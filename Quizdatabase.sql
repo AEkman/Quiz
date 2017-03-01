@@ -38,9 +38,7 @@
 
 	CREATE TABLE question(
 	questionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	--answerId INT NOT NULL,
 	question LONGTEXT NOT NULL,
-	questionQuizid INT NOT NULL,
 	FOREIGN KEY (questionQuizid) REFERENCES quiz(quizId)
 
 	);
