@@ -4,7 +4,7 @@
 var connection = require('./mysqlconnection');
 
 function User() {
-
+    /*  function that gets data from database table user*/
     this.get = function (res) {
         connection.acquire(function (err, con) {
             con.query('SELECT * FROM user', function (err, result) {
@@ -53,7 +53,7 @@ function User() {
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'Quest creaton failed'});
+                    res.send({status: 1, message: 'Quest creation failed'});
                 } else {
                     console.log('Quest created successfully');
                     // res.send({status: 0, message: 'Quest created successfully'});
@@ -81,11 +81,11 @@ function User() {
     this.createQuiz = function (quiz, res) {
         console.log(quiz);
         connection.acquire(function (err, con) {
-            con.query("INSERT INTO answers SET ?", quiz, function (err) {
+            con.query("INSERT INTO quiz SET ?", quiz, function (err) { /* answer here? should be quiz? */
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'Quiz creaton failed'});
+                    res.send({status: 1, message: 'Quiz create failed'});
                 } else {
                     console.log('Quiz created successfully');
                     res.send({status: 0, message: 'Quiz created successfully'});

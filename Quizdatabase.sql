@@ -1,5 +1,6 @@
 
 
+
     DROP SCHEMA IF EXISTS quizdb;
 
 	
@@ -20,17 +21,16 @@
 	
 	-- INSERT INTO user(mail, name, password, groups,accountLevel) VALUES (testmail@grod, testnamn, password, groups,accountLevel);
 	
+
 	DROP TABLE IF EXISTS quiz;
+
 
 	CREATE TABLE quiz (
 	quizId INT NOT NUll AUTO_INCREMENT PRIMARY KEY,
 	dateCreated TIMESTAMP NOT NULL,
-	dateFinished TIMESTAMP NOT NULL,
-	times TIME,
-	-- userAnswer SMALLINT NOT NULL,
+	dateFinished DATE NOT NULL,
+	times INT,
 	score SMALLINT NOT NULL,
-	QuizMail VARCHAR(255) NOT NULL,
-	FOREIGN KEY (QuizMail) REFERENCES user(mail)
 	);
 	
 	-- INSERT INTO user(quizId, questionId, dateCreated, dateFinished,times, userAnswer, score,QuizMail) VALUES (1234, testquest, 2017.01.01,2017.01.02 ,20:20, 20, 100,);
