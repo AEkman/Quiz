@@ -7,7 +7,7 @@ function User() {
 
     this.get = function (res) {
         connection.acquire(function (err, con) {
-            con.query('SELECT * FROM user', function (err, result) {
+            con.query('SELECT mail, name FROM user', function (err, result) {
                 con.release();
                 res.send(result);
             });

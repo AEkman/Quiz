@@ -66,12 +66,13 @@ app.get('/settings', function(req, res) {
         title: 'Settings',
         classname: 'settings'
     });
-    databaseFunctions.getUsers(res);
-
-
 });
 
-/*  send the input data from settings --> createUser --> database */
+app.get('/user', function (req, res) {
+    databaseFunctions.get(res);
+});
+
+
 app.post('/settings', function(req, res) {
     var user = {
         mail: req.body.mail,
@@ -82,19 +83,19 @@ app.post('/settings', function(req, res) {
     };
     databaseFunctions.createUser(user, res);
 });
-/*  send input data from Create quiz folder seding to create question, create answer */
+
 app.post('/createQuiz', function (req, res) {
     var question = {
         answerId: req.body.answerId,
-        question: req.body.question
+        question: req.body.question,
+        questPic: req.body.questPic,
+        questionQuizid: req.body.questionQuizid
      };
     var answer = {
         answerId: req.body.answerId,
         answer: req.body.answer,
-        correct: req.body.correct
-    };
-    var quiz = {
-
+        correct: req.body.correct,
+        answerQuestionid: req.body.answerQuestionid
     };
     databaseFunctions.createQuestion(question, res);
     databaseFunctions.createAnswer(answer, res);
