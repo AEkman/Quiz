@@ -9,7 +9,7 @@
 	USE quizdb;
 
     DROP TABLE IF EXISTS user;
-
+    /* USER IS COMPLETT */
 	CREATE TABLE user (
 	mail VARCHAR(255) NOT NULL PRIMARY KEY,
 	name VARCHAR(255) NOT NULL,
@@ -27,7 +27,7 @@
 	dateCreated TIMESTAMP NOT NULL,
 	dateFinished TIMESTAMP NOT NULL,
 	times TIME,
-	userAnswer SMALLINT NOT NULL,
+	-- userAnswer SMALLINT NOT NULL,
 	score SMALLINT NOT NULL,
 	QuizMail VARCHAR(255) NOT NULL,
 	FOREIGN KEY (QuizMail) REFERENCES user(mail)
@@ -41,7 +41,6 @@
 	questionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	answerId INT NOT NULL,
 	question LONGTEXT NOT NULL,
-	questPic MEDIUMBLOB NOT NULL,
 	questionQuizid INT NOT NULL,
 	FOREIGN KEY (questionQuizid) REFERENCES quiz(quizId)
 

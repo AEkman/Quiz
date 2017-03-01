@@ -14,6 +14,7 @@ function User() {
         });
         console.log('SELECT * FROM Databas kördes!')
     };
+    /* Insert user data into mySQL database */
 
     this.getUsers = function (res) {
         connection.acquire(function (err, con) {
