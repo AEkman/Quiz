@@ -1,13 +1,12 @@
 var express = require('express');
 var body = require('body-parser');
 var connection = require('./public/javascripts/mysqlconnection');
-var bodyparser = require('body-parser');
 var databaseFunctions = require('./public/javascripts/database');
 
 // Start express
 var app = express();
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(bodyparser.json());
+app.use(body.urlencoded({extended: true}));
+app.use(body.json());
 connection.init();
 
 // Set static folder
@@ -67,30 +66,6 @@ app.get('/settings', function(req, res) {
         classname: 'settings'
     });
     databaseFunctions.getUsers(res);
-
-
-});
-
-/*  send the input data from settings --> createUser --> database */
-app.post('/settings', function(req, res) {
-    var user = {
-        mail: req.body.mail,
-        name: req.body.name,
-        password: req.body.password,
-        groups: req.body.groups,
-        accountLevel: req.body.accountLevel
-    };
-    databaseFunctions.createUser(user, res);
-});
-/*  send input data from Create quiz folder seding to create question, create answer */
-app.post('/createQuiz', function (req, res) {
-    var quiz = {
-        quizName: req.body.quizName,
-        dateFinished: req.body.dateFinished,
-        times: req.body.times,
-        score: req.body.score
-     };
-    databaseFunctions.createQuiz(quiz, res);
 });
 
 /* User */
@@ -115,6 +90,28 @@ app.get('/admin', function(req, res) {
         title: 'Admin',
         classname: 'admin'
     });
+});
+
+/*  send the input data from settings --> createUser --> database */
+app.post('/settings', function(req) {
+    var user = {
+        mail: req.body.mail,
+        name: req.body.name,
+        password: req.body.password,
+        groups: req.body.groups,
+        accountLevel: req.body.accountLevel
+    };
+    databaseFunctions.createUser(user);
+});
+/*  send input data from Create quiz form */
+app.post('/createquiz', function (req, res) {
+    var quiz = {
+        quizName: req.body.quizName,
+        dateFinished: req.body.dateFinished,
+        times: req.body.times,
+        score: req.body.score
+    };
+    databaseFunctions.createQuiz(quiz, res);
 });
 
 // Start server on port 3000
