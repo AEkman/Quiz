@@ -66,6 +66,9 @@ app.get('/settings', function(req, res) {
         title: 'Settings',
         classname: 'settings'
     });
+    databaseFunctions.getUsers(res);
+
+
 });
 
 /*  send the input data from settings --> createUser --> database */
