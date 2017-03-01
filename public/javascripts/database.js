@@ -19,13 +19,12 @@ function User() {
 
     this.getUsers = function (res) {
         connection.acquire(function (err, con) {
-            con.query('SELECT * FROM user', function (err, result) {
+            con.query('SELECT * FROM user', function (err, rows) {
                 con.release();
                 if(err) {
                     console.log(err);
                 } else {
-                    obj = {print: result};
-                    console.log(obj);
+                    obj = JSON.parse(JSON.stringify(rows));
                 }
             });
         });

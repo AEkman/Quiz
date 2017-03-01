@@ -1,4 +1,4 @@
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <h3 class="page-header"><a href="#col2viewusers" data-toggle="collapse">View Users</a></h3>
     <div id="col2viewusers" class="collapse">
         <table>
@@ -12,7 +12,7 @@
             </tr>
             </thead>
             <tbody>
-            <% print.forEach(function (user) { %>
+            <% obj.forEach(function (user) { %>
             <tr>
                 <td><%= user.mail %></td>
                 <td><%= user.name %></td>

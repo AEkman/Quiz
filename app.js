@@ -59,13 +59,26 @@ app.get('/profile', function(req, res) {
     });
 });
 
+var obj = [];
 /* Settings */
 app.get('/settings', function(req, res) {
-    res.render('settings', {
-        title: 'Settings',
-        classname: 'settings'
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM user', function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                obj = JSON.parse(JSON.stringify(rows));
+                res.render('settings', {
+                    obj:obj,
+                    title: 'Settings',
+                    classname: 'settings'
+                });
+            }
+        });
     });
-    databaseFunctions.getUsers(res);
+
+
 });
 
 /* User */
