@@ -59,7 +59,6 @@ app.get('/profile', function(req, res) {
     });
 });
 
-var obj = [];
 /* Settings */
 app.get('/settings', function(req, res) {
     connection.acquire(function (err, con) {
