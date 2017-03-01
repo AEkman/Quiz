@@ -1,6 +1,5 @@
 
 
-
     DROP SCHEMA IF EXISTS quizdb;
 
 	
@@ -27,25 +26,24 @@
 
 	CREATE TABLE quiz (
 	quizId INT NOT NUll AUTO_INCREMENT PRIMARY KEY,
+	quizName VARCHAR(255) NOT NULL,
 	dateCreated TIMESTAMP NOT NULL,
 	dateFinished DATE NOT NULL,
 	times INT,
 	score SMALLINT NOT NULL,
 	);
--- INSERT INTO quiz VALUES(1, 2007.10.01, 2012.10.09, 12:27, 100, daniel@com);
+
 
 	DROP TABLE IF EXISTS question;
 
 	CREATE TABLE question(
 	questionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	answerId INT NOT NULL,
+	--answerId INT NOT NULL,
 	question LONGTEXT NOT NULL,
 	questionQuizid INT NOT NULL,
 	FOREIGN KEY (questionQuizid) REFERENCES quiz(quizId)
 
 	);
-	
-	/* added questpic as separate, due to possibility to storage pictures/diagrams at size of 16 mb at max */
 
 	DROP TABLE IF EXISTS answer;
 

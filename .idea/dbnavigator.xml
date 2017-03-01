@@ -23,10 +23,14 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="75d15bb0-912f-41ca-9361-40e88b9efd68">
+        <schema name="quizdb" object-types="column, function, table" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="62e3a758-3a87-4988-beed-1f5e82c20c03">
+    <connection id="75d15bb0-912f-41ca-9361-40e88b9efd68">
       <console name="Connection" type="STANDARD" />
     </connection>
   </component>
@@ -34,7 +38,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/Quizdatabase.sql" connection-id="62e3a758-3a87-4988-beed-1f5e82c20c03" current-schema="quizdb" />
+    <mapping file-url="file://$PROJECT_DIR$/testdataSQL.sql" connection-id="75d15bb0-912f-41ca-9361-40e88b9efd68" current-schema="quizdb" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -56,7 +60,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="62e3a758-3a87-4988-beed-1f5e82c20c03" active="true">
+      <connection id="75d15bb0-912f-41ca-9361-40e88b9efd68" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
