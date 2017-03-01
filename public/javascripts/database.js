@@ -15,6 +15,20 @@ function User() {
         console.log('SELECT * FROM Databas kördes!')
     };
 
+    this.getUsers = function (res) {
+        connection.acquire(function (err, con) {
+            con.query('SELECT * FROM user', function (err, result) {
+                con.release();
+                if(err) {
+                    console.log(err);
+                } else {
+                    obj = {print: result};
+                    console.log(obj);
+                }
+            });
+        });
+    };
+
     this.createUser = function (user, res) {
         console.log(user);
         connection.acquire(function (err, con) {
