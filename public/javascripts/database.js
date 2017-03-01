@@ -77,7 +77,6 @@ function User() {
             });
         });
     };
-
     this.createQuiz = function (quiz, res) {
         console.log(quiz);
         connection.acquire(function (err, con) {

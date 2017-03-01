@@ -93,8 +93,6 @@ app.post('/createQuiz', function (req, res) {
     databaseFunctions.createQuiz(quiz, res);
 });
 
-
-
 /* User */
 app.get('/user', function(req, res) {
     res.render('user', {
