@@ -144,19 +144,35 @@ app.post('/createquiz', function (req, res) {
 var questionID = 1;
 var answerID = 1;
 
+var answers = [];
+//Taking in form for creating a question and connected answers.
 app.post('/createquizquestions', function (req, res) {
-   var question = {
+    // Collection data from question form and creating an array.
+    var question = {
        question: req.body.question,
        questionQuizid: questionID
    };
-   var answer = {
-       answer: req.body.answer,
-       correct: req.body.correct,
-       answerQuestionid: answerID
-   };
-   databaseFunctions.createQuestion(question);
-   databaseFunctions.createAnswer(answer, res);
+    // Sending the question array to function for creating a query and sending to database
+    databaseFunctions.createQuestion(question, res);
 
+    // Collection answers and if thay are correct or not and save to an array.
+    var store_answers = req.body.answer;
+    var store_correct = req.body.correct;
+
+    //Looping trough answers and creating an object for each.
+    for (var o = 0; o < store_answers.length; o++) {
+      var answer = {
+       answer: store_answers[o],
+       correct: store_correct[o],
+       answerQuestionid: answerID
+    };
+      answers.push(answer); //Pushing answer objects to answers array.
+    }
+
+    //Looping trough the answers and sending them to function for storing in database
+    for (var i = 0; i < answers.length; i++) {
+        databaseFunctions.createAnswer(answers[i]);
+    }
 });
 
 // Start server on port 3000

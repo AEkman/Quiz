@@ -48,34 +48,34 @@ function User() {
     };
 
     //Create quest funktion
-    this.createQuestion = function (question) {
+    this.createQuestion = function (question, res) {
         console.log(question);
         connection.acquire(function (err, con) {
             con.query("INSERT INTO question SET ?", question, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
-                    // res.send({status: 1, message: 'Quest creation failed'});
+                    res.send({status: 1, message: 'Quest creation failed'});
                 } else {
-                    console.log('Quest created successfully');
-                    // res.send({status: 0, message: 'Quest created successfully'});
+                    console.log('Question created successfully');
+                    res.send({status: 0, message: 'Quest created successfully'});
                 }
             });
         });
     };
 
     //Create answer function
-    this.createAnswer = function (answer, res) {
+    this.createAnswer = function (answer) {
         console.log(answer);
         connection.acquire(function (err, con) {
             con.query("INSERT INTO answers SET ?", answer, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'Answer creaton failed'});
+                    // res.send({status: 1, message: 'Answer creaton failed'});
                 } else {
                     console.log('Answer created successfully');
-                    res.send({status: 0, message: 'Answer created successfully'});
+                    // res.send({status: 0, message: 'Answer created successfully'});
                 }
             });
         });
