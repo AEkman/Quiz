@@ -8,11 +8,12 @@
 <body class="<%= classname %>">
 
 <div class="container">
+    <% include partials/template/navigationadmin.ejs %>
     <div class="row">
-        <% include partials/template/navigationadmin.ejs %>
         <h1>Settings</h1>
         <% include partials/template/createuser.ejs %>
         <% include partials/template/viewusers.ejs %>
+        <% include partials/template/viewquizes.ejs %>
     </div><!-- row -->
     <div class="content"></div>
     <% include partials/template/footer.ejs %>

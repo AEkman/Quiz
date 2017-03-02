@@ -74,15 +74,23 @@ app.get('/profile', function(req, res) {
 app.get('/settings', function(req, res) {
     connection.acquire(function (err, con) {
         con.query('SELECT * FROM user', function (err, rows) {
-            con.release();
             if(err) {
                 console.log(err);
             } else {
-                obj = JSON.parse(JSON.stringify(rows));
-                res.render('settings', {
-                    obj:obj,
-                    title: 'Settings',
-                    classname: 'settings'
+                con.query('SELECT * FROM quiz', function (err, quizes) {
+                    con.release();
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        obj = JSON.parse(JSON.stringify(rows));
+                        quiz = JSON.parse(JSON.stringify(quizes));
+                        res.render('settings', {
+                            obj:obj,
+                            quiz:quiz,
+                            title: 'Settings',
+                            classname: 'settings'
+                        });
+                    }
                 });
             }
         });
