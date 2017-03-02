@@ -37,9 +37,20 @@ app.get('/createquiz', function(req, res) {
 
 /* Take Quiz Quiz */
 app.get('/takequiz', function(req, res) {
-    res.render('takequiz', {
-        title: 'Take Quiz',
-        classname: 'takequiz'
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM quiz', function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                loadquizes = JSON.parse(JSON.stringify(rows));
+                res.render('takeQuiz', {
+                    loadquizes:loadquizes,
+                    title: 'takequiz',
+                    classname: 'takequiz'
+                });
+            }
+        });
     });
 });
 
@@ -76,8 +87,6 @@ app.get('/settings', function(req, res) {
             }
         });
     });
-
-
 });
 
 /* User */
