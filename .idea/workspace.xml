@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="649d3bab-62be-4423-b45e-1e6dea7795bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/takequiz.ejs" afterPath="$PROJECT_DIR$/views/takequiz.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/viewusers.ejs" afterPath="$PROJECT_DIR$/views/partials/template/viewusers.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,17 +31,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewusers.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="viewusers.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/partials/template/viewusers.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fetchquizes.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fetchquizes.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/partials/template/fetchquizes.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -127,11 +125,11 @@
         <option value="$PROJECT_DIR$/views/settings.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/database.js" />
         <option value="$PROJECT_DIR$/views/partials/template/createuser.ejs" />
-        <option value="$PROJECT_DIR$/views/partials/template/viewusers.ejs" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/views/takequiz.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/template/viewusers.ejs" />
       </list>
     </option>
   </component>
@@ -372,7 +370,7 @@
       <workItem from="1488368350768" duration="5565000" />
       <workItem from="1488375858955" duration="1751000" />
       <workItem from="1488405261958" duration="6999000" />
-      <workItem from="1488456418863" duration="2770000" />
+      <workItem from="1488456418863" duration="3115000" />
     </task>
     <task id="LOCAL-00001" summary="Added shortcut for installation.">
       <created>1487766448925</created>
@@ -458,11 +456,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488457219451</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Hämtar nu quiz som finns i databasen till sidan TakeQuiz">
+      <created>1488459222329</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1488459222329</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67980000" />
+    <option name="totallyTimeSpent" value="68325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -523,7 +528,8 @@
     <MESSAGE value="added content div so show results from sql in settings file" />
     <MESSAGE value="Dropdown for user account creation" />
     <MESSAGE value="Fullösning på att hämta alla användare" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fullösning på att hämta alla användare" />
+    <MESSAGE value="Hämtar nu quiz som finns i databasen till sidan TakeQuiz" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hämtar nu quiz som finns i databasen till sidan TakeQuiz" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -769,14 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/template/viewusers.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -797,6 +795,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/template/viewusers.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="45" lean-forward="true" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
           <folding />
         </state>
       </provider>
