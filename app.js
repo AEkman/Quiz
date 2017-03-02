@@ -113,6 +113,7 @@ app.get('/admin', function(req, res) {
     });
 });
 
+// Create question for quiz page
 app.get('/createquizquestions', function(req, res) {
     res.render('createquizquestions', {
         title: 'createquizquestions',
@@ -131,6 +132,7 @@ app.post('/settings', function(req, ress) {
     };
     databaseFunctions.createUser(user, ress);
 });
+
 /*  send input data from Create quiz form */
 app.post('/createquiz', function (req, res) {
     var quiz = {
@@ -147,26 +149,27 @@ var answerID = 1;
 var answers = [];
 //Taking in form for creating a question and connected answers.
 app.post('/createquizquestions', function (req, res) {
+
     // Collection data from question form and creating an array.
     var question = {
-       question: req.body.question,
-       questionQuizid: questionID
-   };
+        question: req.body.question,
+        questionQuizid: questionID
+    };
     // Sending the question array to function for creating a query and sending to database
     databaseFunctions.createQuestion(question, res);
 
-    // Collection answers and if thay are correct or not and save to an array.
+    // Collection answers and if they are correct or not and save to an array.
     var store_answers = req.body.answer;
     var store_correct = req.body.correct;
 
     //Looping trough answers and creating an object for each.
     for (var o = 0; o < store_answers.length; o++) {
-      var answer = {
-       answer: store_answers[o],
-       correct: store_correct[o],
-       answerQuestionid: answerID
-    };
-      answers.push(answer); //Pushing answer objects to answers array.
+        var answer = {
+            answer: store_answers[o],
+            correct: store_correct[o],
+            answerQuestionid: answerID
+        };
+        answers.push(answer); //Pushing answer objects to answers array.
     }
 
     //Looping trough the answers and sending them to function for storing in database

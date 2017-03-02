@@ -16,7 +16,6 @@ function User() {
         console.log('SELECT * FROM Databas kördes!')
     };
     /* Insert user data into mySQL database */
-
     this.getUsers = function (res) {
         connection.acquire(function (err, con) {
             con.query('SELECT * FROM user', function (err, rows) {
@@ -47,7 +46,7 @@ function User() {
         });
     };
 
-    //Create quest funktion
+    //Create quest function
     this.createQuestion = function (question, res) {
         console.log(question);
         connection.acquire(function (err, con) {
@@ -72,14 +71,13 @@ function User() {
                 con.release();
                 if(err) {
                     console.log(err);
-                    // res.send({status: 1, message: 'Answer creaton failed'});
                 } else {
                     console.log('Answer created successfully');
-                    // res.send({status: 0, message: 'Answer created successfully'});
                 }
             });
         });
     };
+
     //Create quiz function, and returning the ID from the last created quiz
     this.createQuiz = function (quiz, res) {
         console.log(quiz);
