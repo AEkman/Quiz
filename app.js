@@ -159,6 +159,7 @@ app.post('/settings', function(req, ress) {
     databaseFunctions.createUser(user, ress);
 });
 
+var questionID;
 /*  send input data from Create quiz form */
 app.post('/createquiz', function (req, res) {
     var quiz = {
@@ -167,11 +168,25 @@ app.post('/createquiz', function (req, res) {
         times: req.body.times,
         score: req.body.score
     };
-    databaseFunctions.createQuiz(quiz, res);
-});
-var questionID = 1;
-var answerID = 1;
+        databaseFunctions.createQuiz(quiz, res);
 
+        connection.acquire(function (err, con) {
+            con.query('SELECT quizId FROM quizdb.quiz ORDER BY quizId DESC LIMIT 1', function (err, quizIdres) {
+                con.release();
+                if(err) {
+                    console.log(err)
+                } else {
+                    obj = JSON.parse(JSON.stringify(quizIdres));
+                    obj.forEach(function (id) {
+                        questionID = id.quizId;
+                        console.log(questionID);
+                    });
+                }
+            });
+        });
+});
+
+var answerID = 1;
 var answers = [];
 //Taking in form for creating a question and connected answers.
 app.post('/createquizquestions', function (req, res) {

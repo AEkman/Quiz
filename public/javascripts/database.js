@@ -2,7 +2,6 @@
  * Created by erica on 2017-02-25.
  */
 var connection = require('./mysqlconnection');
-var latestID;
 
 function User() {
     /*  function that gets data from database table user*/
@@ -78,6 +77,7 @@ function User() {
         });
     };
 
+
     //Create quiz function, and returning the ID from the last created quiz
     this.createQuiz = function (quiz, res) {
         console.log(quiz);
@@ -89,9 +89,8 @@ function User() {
                     res.send({status: 1, message: 'Quiz create failed'});
                 } else {
                     con.query("SELECT LAST_INSERT_ID();", function (err, result) {
-                        res.send(result);
-                        console.log(result);
-                    });
+                    res.send(result);
+                });
                 }
             });
         });
