@@ -1,0 +1,24 @@
+
+<div id="countdown"></div>
+<script>
+    function countdown(minutes) { // we only use minutes as we have chosen so..
+        var seconds = 60;
+        var mins = minutes // get the approciate link to the input.
+        function tick() {
+            var counter = document.getElementById("countdown");
+            var current_minutes = mins-1 // count donw minutes
+            seconds--; // counting down seonds
+            counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); // displays the remaoining time
+            if( seconds > 0 ) {  // if statement that check for decreased time, that minutes is counted dowwn.
+                setTimeout(tick, 1000);
+            } else {
+                if(mins > 1){
+                    countdown(mins-1);
+                }
+            }
+        }
+        tick();
+    }
+    countdown(2); // two min but here we need to put in
+</script>
+</div>
