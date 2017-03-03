@@ -45,7 +45,7 @@ function User() {
         });
     };
 
-    //Create quest function
+     //Create quest function
     this.createQuestion = function (question) {
         console.log(question);
         connection.acquire(function (err, con) {

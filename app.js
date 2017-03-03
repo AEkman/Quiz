@@ -297,7 +297,6 @@ app.post('/createquizquestions', function (req, res) {
     setTimeout(redirect, 1500);
     answers = [];
 });
-
 // Start server on port 3000
 app.set('port', process.env.PORT || 3000); // use port 3000 unless there exists a preconfigured port
 var server = app.listen(app.get('port'), function() {
