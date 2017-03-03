@@ -1,5 +1,5 @@
-
-<div id="countdown"></div>
+<button onclick="countdown()">Start quiz</button>
+<div id="countdown">
 <script>
     function countdown(minutes) { // we only use minutes as we have chosen so..
         var seconds = 60;
@@ -21,9 +21,5 @@
     }
     countdown(2);
 </script>
-<script>
-
-
-</script>
-
+<% include partials/template/jsdefaults.ejs %>
 </div>
