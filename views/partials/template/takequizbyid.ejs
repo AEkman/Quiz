@@ -1,0 +1,17 @@
+<div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h1>
+        <% loadQuizes.forEach(function (quizes) { %>
+            <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
+        <% }) %>
+    </h1>
+    <form action="/takequiz" method="POST">
+        <% quizQuestions.forEach(function (questions) { %> <!-- Load question by question WHERE questionQuizId = ? -->
+            <div class="well well-sm">
+                <h3><%= questions.question %></h3> <!-- Print question -->
+                    <% answers.forEach(function (ans) { %><!-- Load answers by answers WHERE answerQuestionid = ? -->
+                    <input type="checkbox" name="<%= ans.answer %>" value=""><%= ans.answer %><br> <!-- Print answers followed by checkbox -->
+                    <% }) %> <!-- End loading answers -->
+            </div> <!-- well -->
+        <% }) %> <!-- End loading question -->
+    </form> <!-- form -->
+</div> <!-- content -->

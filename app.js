@@ -35,7 +35,7 @@ app.get('/createquiz', function(req, res) {
     });
 });
 
-/* Take Quiz Quiz */
+/* Take Quiz */
 app.get('/takequiz', function(req, res) {
     connection.acquire(function (err, con) {
         con.query('SELECT * FROM quiz', function (err, rows) {
@@ -48,6 +48,41 @@ app.get('/takequiz', function(req, res) {
                     loadquizes:loadquizes,
                     title: 'takequiz',
                     classname: 'takequiz'
+                });
+            }
+        });
+    });
+});
+1
+app.get('/takequiz/:id', function(req, res) {
+    connection.acquire(function (err, con) {
+        var quizId = req.params.id;
+        con.query('SELECT * FROM quiz WHERE quizId = ?', quizId, function (err, qid) {
+            if(err) {
+                console.log(err);
+            } else {
+                con.query('SELECT * FROM question WHERE questionQuizId = ?', quizId, function (err, question) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        con.query('SELECT * FROM answers WHERE answerQuestionid = ?', quizId, function (err, answer) {
+                            con.release();
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                loadQuizes = JSON.parse(JSON.stringify(qid));
+                                quizQuestions = JSON.parse(JSON.stringify(question));
+                                answers = JSON.parse(JSON.stringify(answer));
+                                res.render('takequizbyid', {
+                                    loadQuizes: loadQuizes,
+                                    quizQuestions: quizQuestions,
+                                    answers: answers,
+                                    title: 'Take quiz',
+                                    classname: 'takequizbyid'
+                                });
+                            }
+                        });
+                    }
                 });
             }
         });
@@ -96,6 +131,7 @@ app.get('/settings', function(req, res) {
         });
     });
 });
+
 /*  countdownclock */
 app.get('/countdownclock', function(req, res) {
     connection.acquire(function (err, con) {
