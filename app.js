@@ -64,7 +64,8 @@ app.get('/takequiz/:id', function(req, res) {
                     if (err) {
                         console.log(err);
                     } else {
-                        con.query('SELECT * FROM answers WHERE answerQuestionid = ?', quizId, function (err, answer) {
+                        con.query('SELECT * FROM answers WHERE answerQuestionid IN (SELECT questionId FROM question WHERE questionQuizid = ?)', quizId, function (err, answer) {
+                            console.log(answer);
                             con.release();
                             if (err) {
                                 console.log(err);
