@@ -11,7 +11,9 @@ DROP TABLE IF EXISTS user;
 	accountLevel VARCHAR(255) NOT NULL
 	);
 
-	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("daniel@com", "daniel", "password","alpha", "creator");
+	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("info@andreasekman.com", "Andreas Ekman", "12345" ,"Group 1", "Admin");
+	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("xtironman@hotmail.com", "Göran Person", "morot" ,"Group 2", "Creator");
+
 
 DROP TABLE IF EXISTS quiz;
 	CREATE TABLE quiz (
@@ -23,7 +25,8 @@ DROP TABLE IF EXISTS quiz;
 	score SMALLINT NOT NULL
 	);
 
-    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('ALBAN', '2008-06-13', 25, 20);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-03-03', 2, 20);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Bergskedjor', '2017-03-03', 2, 20);
 
 DROP TABLE IF EXISTS question;
 	CREATE TABLE question(
@@ -33,7 +36,9 @@ DROP TABLE IF EXISTS question;
 	FOREIGN KEY (questionQuizid) REFERENCES quiz(quizId)
 	);
 
-	INSERT INTO question (questionQuizid,question) VALUES (1,"this si shit");
+    INSERT INTO question (questionQuizid,question) VALUES (1,"What color is the Sky?");
+	INSERT INTO question (questionQuizid,question) VALUES (2,"Vilket är världens högsta berg?");
+	INSERT INTO question (questionQuizid,question) VALUES (2,"Vilket är världens tredje högsta berg?");
 
 DROP TABLE IF EXISTS answers;
 	CREATE TABLE answers(
@@ -44,7 +49,18 @@ DROP TABLE IF EXISTS answers;
 	FOREIGN KEY (answerQuestionid) REFERENCES question(questionId)
 	);
 
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"this si shit answer");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Red");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Green");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,1,"Blue");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Pink");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Red");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 2 Answer 1");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,1,"Question 2 Answer 2");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 2 Answer 3");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 3 Answer 1");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 3 Answer 2");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,1,"Question 3 Answer 3");
+
 
 DROP TABLE IF EXISTS quiztaken;
 	CREATE TABLE quiztaken(
@@ -57,4 +73,4 @@ DROP TABLE IF EXISTS quiztaken;
 	FOREIGN KEY (quizTakenMail) REFERENCES user(mail)
 	);
 
-	INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elapTimes) VALUES ("daniel@com",1,39,'1000-01-01 00:00:00');
+	INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elapTimes) VALUES ("info@andreasekman.com",1,39,'1000-01-01 00:00:00');
