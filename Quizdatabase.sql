@@ -54,12 +54,12 @@ DROP TABLE IF EXISTS answers;
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,1,"Blue");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Pink");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Red");
-    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 2 Answer 1");
-    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,1,"Question 2 Answer 2");
-    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 2 Answer 3");
-    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 3 Answer 1");
-    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 3 Answer 2");
-    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,1,"Question 3 Answer 3");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 1 Answer 1");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,1,"Question 1 Answer 2");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 1 Answer 3");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 2 Answer 1");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 2 Answer 2");
+    INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,1,"Question 2 Answer 3");
 
 
 DROP TABLE IF EXISTS quiztaken;
