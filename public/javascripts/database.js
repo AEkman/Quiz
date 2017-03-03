@@ -46,17 +46,17 @@ function User() {
     };
 
     //Create quest function
-    this.createQuestion = function (question, res) {
+    this.createQuestion = function (question) {
         console.log(question);
         connection.acquire(function (err, con) {
             con.query("INSERT INTO question SET ?", question, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'Quest creation failed'});
+                    // res.send({status: 1, message: 'Quest creation failed'});
                 } else {
                     console.log('Question created successfully');
-                    res.send({status: 0, message: 'Quest created successfully'});
+                    // res.send({status: 0, message: 'Quest created successfully'});
                 }
             });
         });
@@ -79,17 +79,17 @@ function User() {
 
 
     //Create quiz function, and returning the ID from the last created quiz
-    this.createQuiz = function (quiz, res) {
+    this.createQuiz = function (quiz) {
         console.log(quiz);
         connection.acquire(function (err, con) {
             con.query("INSERT INTO quiz SET ?", quiz, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'Quiz create failed'});
+                    // res.send({status: 1, message: 'Quiz create failed'});
                 } else {
                     con.query("SELECT LAST_INSERT_ID();", function (err, result) {
-                    res.send(result);
+                    // res.send(result);
                 });
                 }
             });

@@ -53,7 +53,6 @@ app.get('/takequiz', function(req, res) {
         });
     });
 });
-1
 app.get('/takequiz/:id', function(req, res) {
     connection.acquire(function (err, con) {
         var quizId = req.params.id;
@@ -184,7 +183,7 @@ app.get('/createquizquestions', function(req, res) {
 });
 
 /*  send the input data from settings --> createUser --> database */
-app.post('/settings', function(req, ress) {
+app.post('/settings', function(req, res) {
     var user = {
         mail: req.body.mail,
         name: req.body.name,
@@ -192,67 +191,95 @@ app.post('/settings', function(req, ress) {
         groups: req.body.groups,
         accountLevel: req.body.accountLevel
     };
-    databaseFunctions.createUser(user, ress);
+    databaseFunctions.createUser(user, res);
 });
 
-var questionID;
+var stored_quizId;
 /*  send input data from Create quiz form */
-app.post('/createquiz', function (req, res) {
-    var quiz = {
-        quizName: req.body.quizName,
-        dateFinished: req.body.dateFinished,
-        times: req.body.times,
-        score: req.body.score
+app.post('/createquiz', function (req) {
+    function createQuiz() {
+        var quiz = {
+            quizName: req.body.quizName,
+            dateFinished: req.body.dateFinished,
+            times: req.body.times,
+            score: req.body.score
+        };
+        databaseFunctions.createQuiz(quiz);
     };
-        databaseFunctions.createQuiz(quiz, res);
-
+    function getQuizId() {
         connection.acquire(function (err, con) {
-            con.query('SELECT quizId FROM quizdb.quiz ORDER BY quizId DESC LIMIT 1', function (err, quizIdres) {
+        con.query('SELECT quizId FROM quizdb.quiz ORDER BY quizId DESC LIMIT 1', function (err, quizIdres) {
+            con.release();
+            if (err) {
+                console.log(err)
+            } else {
+                obj = JSON.parse(JSON.stringify(quizIdres));
+                obj.forEach(function (id) {
+                    stored_quizId = id.quizId;
+                    console.log("Stored QuizId: " + stored_quizId);
+                });
+            }
+        });
+    });
+
+};
+    createQuiz();
+    setTimeout(getQuizId, 500);
+});
+
+var stored_questionID;
+var answers = [];
+//Taking in form for creating a question and connected answers.
+app.post('/createquizquestions', function (req) {
+
+    function createQuestion() {
+        // Collection data from question form and creating an array.
+        var question = {
+            question: req.body.question,
+            questionQuizid: stored_quizId
+        };
+        // Sending the question array to function for creating a query and sending to database
+        databaseFunctions.createQuestion(question);
+    };
+    function getQuestionId() {
+            connection.acquire(function (err, con) {
+            con.query('SELECT questionId FROM question ORDER BY questionId DESC LIMIT 1', function (err, questionIdRes) {
                 con.release();
-                if(err) {
+                if (err) {
                     console.log(err)
                 } else {
-                    obj = JSON.parse(JSON.stringify(quizIdres));
+                    obj = JSON.parse(JSON.stringify(questionIdRes));
                     obj.forEach(function (id) {
-                        questionID = id.quizId;
-                        console.log(questionID);
+                        stored_questionID = id.questionId;
+                        console.log("Stored questionId: " + stored_questionID);
                     });
                 }
             });
         });
-});
-
-var answerID = 1;
-var answers = [];
-//Taking in form for creating a question and connected answers.
-app.post('/createquizquestions', function (req, res) {
-
-    // Collection data from question form and creating an array.
-    var question = {
-        question: req.body.question,
-        questionQuizid: questionID
     };
-    // Sending the question array to function for creating a query and sending to database
-    databaseFunctions.createQuestion(question, res);
+    function createAnswrs() {
+        // Collection answers and if they are correct or not and save to an array.
+        var store_answers = req.body.answer;
+        var store_correct = req.body.correct;
 
-    // Collection answers and if they are correct or not and save to an array.
-    var store_answers = req.body.answer;
-    var store_correct = req.body.correct;
-
-    //Looping trough answers and creating an object for each.
-    for (var o = 0; o < store_answers.length; o++) {
-        var answer = {
-            answer: store_answers[o],
-            correct: store_correct[o],
-            answerQuestionid: answerID
-        };
-        answers.push(answer); //Pushing answer objects to answers array.
-    }
-
-    //Looping trough the answers and sending them to function for storing in database
-    for (var i = 0; i < answers.length; i++) {
-        databaseFunctions.createAnswer(answers[i]);
-    }
+        //Looping trough answers and creating an object for each.
+        for (var o = 0; o < store_answers.length; o++) {
+            var answer = {
+                answer: store_answers[o],
+                correct: store_correct[o],
+                answerQuestionid: stored_questionID
+            };
+            answers.push(answer); //Pushing answer objects to answers array.
+        }
+        //Looping trough the answers and sending them to function for storing in database
+        for (var i = 0; i < answers.length; i++) {
+            databaseFunctions.createAnswer(answers[i]);
+        }
+};
+    createQuestion();
+    setTimeout(getQuestionId, 500);
+    setTimeout(createAnswrs, 1000);
+    answers = [];
 });
 
 // Start server on port 3000

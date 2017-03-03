@@ -14,7 +14,6 @@
         <h1>Create Quiz!</h1>
         <p>Let's create some ultra cool quizes!</p>
         <p>You are on page <%= title %></p>
-    /*hardcoded answers 4 option for testing */
         <form method="post"  action="/createquizquestions">
             <div class="form-group">
                 <% include partials/template/createquestion.ejs %>
@@ -24,7 +23,8 @@
                 <% include partials/template/createAnswer.ejs %>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-lg">Create Quiz</button>
+                <button type="submit" class="btn btn-primary btn-lg">Create Quiz</button>
+                <button type="submit" class="btn btn-primary btn-lg" onclick="location.href='/views/createquizquestions.ejs';">Add another question</button>
             </div>
         </form>
     </div><!-- span12 -->
