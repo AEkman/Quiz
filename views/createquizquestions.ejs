@@ -23,15 +23,19 @@
                 <% include partials/template/createAnswer.ejs %>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg">Create Quiz</button>
-                <button type="submit" class="btn btn-primary btn-lg" onclick="location.href='/views/createquizquestions.ejs';">Add another question</button>
+                <button type="submit" class="btn btn-primary btn-lg">Create Question</button>
+                <!--<button id="quizDone" class="btn btn-primary btn-lg">Quiz Done</button>-->
             </div>
         </form>
     </div><!-- span12 -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
-
-
+<script src="../app.js"></script>
+<script type="text/javascript">
+    document.getElementById("quizDone").onclick = function () {
+        location.href = "/views/createquiz.ejs";
+    }
+</script>
 <% include partials/template/jsdefaults.ejs %>
 </body>
 </html>

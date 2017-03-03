@@ -197,7 +197,7 @@ app.post('/settings', function(req, res) {
 
 var stored_quizId;
 /*  send input data from Create quiz form */
-app.post('/createquiz', function (req) {
+app.post('/createquiz', function (req, res) {
     function createQuiz() {
         var quiz = {
             quizName: req.body.quizName,
@@ -226,13 +226,19 @@ app.post('/createquiz', function (req) {
 };
     createQuiz();
     setTimeout(getQuizId, 500);
+    return res.redirect('/createquizquestions');
 });
+
+function addNumberOfQuestions() {
+    numberOfQuestions ++;
+    console.log("Quiz number added");
+};
 
 var stored_questionID;
 var answers = [];
+var numberOfQuestions = 1;
 //Taking in form for creating a question and connected answers.
-app.post('/createquizquestions', function (req) {
-
+app.post('/createquizquestions', function (req, res) {
     function createQuestion() {
         // Collection data from question form and creating an array.
         var question = {
@@ -277,9 +283,18 @@ app.post('/createquizquestions', function (req) {
             databaseFunctions.createAnswer(answers[i]);
         }
 };
+    function redirect() {
+        if(numberOfQuestions > 0) {
+            return res.redirect("/createquiz");
+        } else {
+            return res.redirect(req.get('referer'));
+        }
+    }
+
     createQuestion();
     setTimeout(getQuestionId, 500);
     setTimeout(createAnswrs, 1000);
+    setTimeout(redirect, 1500);
     answers = [];
 });
 
