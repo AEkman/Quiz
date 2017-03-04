@@ -5,9 +5,16 @@ var databaseFunctions = require('./public/javascripts/database');
 
 // Start express
 var app = express();
-app.use(body.urlencoded({extended: true}));
-app.use(body.json());
+
+app.use(body.json()); // Parses html data to JSON
+app.use(body.urlencoded({extended: true})); // If data is sent URL encoded, parse to JSON
 connection.init();
+
+// Middleware to log all requests
+// app.use(function(req, res, next) {
+//     console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
+//     next();
+// });
 
 // Set static folder
 app.use(express.static(__dirname + '/public'));
@@ -53,6 +60,7 @@ app.get('/takequiz', function(req, res) {
         });
     });
 });
+
 app.get('/takequiz/:id', function(req, res) {
     connection.acquire(function (err, con) {
         var quizId = req.params.id;
@@ -65,7 +73,6 @@ app.get('/takequiz/:id', function(req, res) {
                         console.log(err);
                     } else {
                         con.query('SELECT * FROM answers WHERE answerQuestionid IN (SELECT questionId FROM question WHERE questionQuizid = ?)', quizId, function (err, answer) {
-                            console.log(answer);
                             con.release();
                             if (err) {
                                 console.log(err);
@@ -87,6 +94,35 @@ app.get('/takequiz/:id', function(req, res) {
             }
         });
     });
+});
+
+app.post('/takequiz/:id', function(req, res) {
+try {
+    var reqObj = req.body;
+    console.log(res);
+    connection.acquire(function(err, con){
+        if(err) {
+            // console.log('SQL Connection error: ', err);
+            return next(err);
+        } else {
+            // var insertSql = "INSERT INTO quiz SET ?";
+            // var insertValues = {
+            //     answerId: req.Obj.name
+            // };
+            // var query = con.query(insertSql, insertValues, function(err, result) {
+            //     if (err) {
+            //         console.error('SWL error: ', err);
+            //         return next(err);
+            //     }
+            //     // var quizId = result.inesrtId;
+            // });
+        }
+        });
+    }
+    catch(ex) {
+    console.error("Internal error: " + ex);
+    return next(ex);
+    }
 });
 
 /* Results */
@@ -175,7 +211,7 @@ app.get('/admin', function(req, res) {
     });
 });
 
-// Create question for quiz page
+/* Create question for quiz page */
 app.get('/createquizquestions', function(req, res) {
     res.render('createquizquestions', {
         title: 'createquizquestions',
@@ -196,6 +232,7 @@ app.post('/settings', function(req, res) {
 });
 
 var stored_quizId;
+
 /*  send input data from Create quiz form */
 app.post('/createquiz', function (req, res) {
     function createQuiz() {
@@ -297,6 +334,8 @@ app.post('/createquizquestions', function (req, res) {
     setTimeout(redirect, 1500);
     answers = [];
 });
+
+
 // Start server on port 3000
 app.set('port', process.env.PORT || 3000); // use port 3000 unless there exists a preconfigured port
 var server = app.listen(app.get('port'), function() {

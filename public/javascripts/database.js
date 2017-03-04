@@ -14,8 +14,9 @@ function User() {
         });
         console.log('SELECT * FROM Databas kördes!')
     };
+
     /* Insert user data into mySQL database */
-    this.getUsers = function (res) {
+    this.getUsers = function (req, res) {
         connection.acquire(function (err, con) {
             con.query('SELECT * FROM user', function (err, rows) {
                 con.release();
@@ -45,7 +46,7 @@ function User() {
         });
     };
 
-     //Create quest function
+     //Create question function
     this.createQuestion = function (question) {
         console.log(question);
         connection.acquire(function (err, con) {
@@ -77,7 +78,6 @@ function User() {
         });
     };
 
-
     //Create quiz function, and returning the ID from the last created quiz
     this.createQuiz = function (quiz) {
         console.log(quiz);
@@ -96,4 +96,5 @@ function User() {
         });
     };
 }
+
 module.exports = new User();

@@ -4,7 +4,7 @@
             <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
         <% }) %>
     </h1>
-    <form action="/takequiz" method="POST">
+    <form action="/takequiz/:id" method="POST">
         <% quizQuestions.forEach(function (questions) { %> <!-- Load question by question WHERE questionQuizId = ? -->
             <div class="well well-sm">
                 <h3><%= questions.question %></h3> <!-- Print question -->
@@ -13,5 +13,6 @@
                     <% }) %> <!-- End loading answers -->
             </div> <!-- well -->
         <% }) %> <!-- End loading question -->
+        <input type="submit" class="btn btn-success" value="Submit">
     </form> <!-- form -->
 </div> <!-- content -->
