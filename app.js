@@ -168,6 +168,14 @@ app.get('/settings', function(req, res) {
     });
 });
 
+app.delete('/settings/:id', function(req, res) {
+    // sätt in query som variabel
+    // variabel = variabel.filter(function(definition) {
+    //     return definition.term.toLowerCase() !== req.params.term.toLowerCase();
+    // });
+    // res.query till databas(variabel);
+});
+
 /*  countdownclock */
 app.get('/countdownclock', function(req, res) {
     connection.acquire(function (err, con) {
