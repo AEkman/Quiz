@@ -5,14 +5,16 @@
         <% }) %>
     </h1>
     <form action="/takequiz/:id" method="POST">
-        <% quizQuestions.forEach(function (questions) { %> <!-- Load question by question WHERE questionQuizId = ? -->
+        <% quizQuestions.forEach(function (question) { %>
             <div class="well well-sm">
-                <h3><%= questions.question %></h3> <!-- Print question -->
-                    <% answers.forEach(function (ans) { %><!-- Load answers by answers WHERE answerQuestionid = ? -->
-                    <input type="checkbox" name="<%= ans.answer %>" value=""><%= ans.answer %><br> <!-- Print answers followed by checkbox -->
-                    <% }) %> <!-- End loading answers -->
-            </div> <!-- well -->
-        <% }) %> <!-- End loading question -->
+            <h3><%= question.question %></h3>
+            <% answers.forEach(function (ans) { %>
+            <% if (ans.answerQuestionid === question.questionId) { %>
+            <input type="checkbox" value="0">&nbsp<%= ans.answer %><br>
+            <% } %>
+            <% }) %>
+        </div> <!-- well -->
+        <% }) %>
         <input type="submit" class="btn btn-success" value="Submit">
     </form> <!-- form -->
 </div> <!-- content -->
