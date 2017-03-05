@@ -1,9 +1,9 @@
 $( document ).ready(function() {
-    $(".checkbox").change( function() {
+    $("form input:checkbox").on('change', function() {
         if ( $(this).is(":checked") ) {
-            alert("checked");
+
         } else if ( $(this).not(":checked") ) {
-            alert("unchecked");
+
         }
     });
 });

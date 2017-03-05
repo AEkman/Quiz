@@ -1,4 +1,4 @@
-DROP SCHEMA IF EXISTS quizdb;
+﻿DROP SCHEMA IF EXISTS quizdb;
 	CREATE SCHEMA IF NOT EXISTS quizdb;
 	USE quizdb;
 
@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS user;
 
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("info@andreasekman.com", "Andreas Ekman", "12345" ,"Group 1", "Admin");
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("xtironman@hotmail.com", "Göran Person", "morot" ,"Group 2", "Creator");
+	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("424@sverige.nu", "Kalle Svensson", "gurka" ,"Group 3", "User");
 
 
 DROP TABLE IF EXISTS quiz;
@@ -25,8 +26,9 @@ DROP TABLE IF EXISTS quiz;
 	score SMALLINT NOT NULL
 	);
 
-    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-03-03', 2, 20);
-    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Bergskedjor', '2017-03-03', 2, 20);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-03-03', 10, 20);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Bergskedjor', '2017-03-03', 20, 20);
+	INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Klockor', '2017-03-03', 30, 20);
 
 DROP TABLE IF EXISTS question;
 	CREATE TABLE question(
@@ -39,6 +41,10 @@ DROP TABLE IF EXISTS question;
     INSERT INTO question (questionQuizid,question) VALUES (1,"What color is the Sky?");
 	INSERT INTO question (questionQuizid,question) VALUES (2,"Vilket är världens högsta berg?");
 	INSERT INTO question (questionQuizid,question) VALUES (2,"Vilket är världens tredje högsta berg?");
+	INSERT INTO question (questionQuizid,question) VALUES (3,"Vilken är världens dyraste klocka?");
+	INSERT INTO question (questionQuizid,question) VALUES (3,"När uppfanns klockan?");
+	INSERT INTO question (questionQuizid,question) VALUES (3,"Vilket märke på klockan använder Sean Connery när han spelar James Bond?");
+	INSERT INTO question (questionQuizid,question) VALUES (3,"Vilket märke på klockan använder Daniel Craig när han spelar James Bond?");
 
 DROP TABLE IF EXISTS answers;
 	CREATE TABLE answers(
@@ -60,6 +66,17 @@ DROP TABLE IF EXISTS answers;
     INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 2 Answer 1");
     INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,0,"Question 2 Answer 2");
     INSERT INTO answers (answerQuestionid,correct,answer) VALUES (3,1,"Question 2 Answer 3");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (4,1,"201-KARAT CHOPARD");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (4,0,"PATEK PHILIPPE SUPERCOMPLICATION");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 150 år sedan");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,1,"För 4000 år sedan");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 3000 år sedan");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 2017 år sedan");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 3500 år sedan");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (6,1,"Rolex Submariner");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (6,0,"Omega-klocka");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (7,1,"Omega-klocka");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (7,0,"Rolex Submariner");
 
 
 DROP TABLE IF EXISTS quiztaken;

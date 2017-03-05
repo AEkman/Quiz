@@ -12,9 +12,8 @@
     <% include partials/template/navigationadmin.ejs %>
     <div class="row">
         <h1>Create Quiz!</h1>
-        <p>Let's create some ultra cool quizes!</p>
-        <p>You are on page <%= title %></p>
-        <form method="post"  action="/createquizquestions">
+        <p>Let's create some quizes!</p>
+        <form method="post" action="/createquizquestions">
             <div class="form-group">
                 <% include partials/template/createquestion.ejs %>
                 <% include partials/template/createAnswer.ejs %>
@@ -23,11 +22,11 @@
                 <% include partials/template/createAnswer.ejs %>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-lg">Create Question</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-success center-block">Create Question</button>
                  <!--<button id="quizDone" class="btn btn-primary btn-lg">Quiz Done</button>-->
             </div>
         </form>
-    </div><!-- span12 -->
+    </div><!-- row -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
 <script src="../app.js"></script>
