@@ -275,16 +275,19 @@ app.post('/createquiz', function (req, res) {
     return res.redirect('/createquizquestions');
 });
 
-function addNumberOfQuestions() {
-    numberOfQuestions ++;
-    console.log("Quiz number added");
-};
-
 var stored_questionID;
 var answers = [];
-var numberOfQuestions = 1;
+var numberOfQuestions = 0;
 //Taking in form for creating a question and connected answers.
 app.post('/createquizquestions', function (req, res) {
+    //Checking what button were pressed.
+    if(req.body.hasOwnProperty("button1")){
+        numberOfQuestions ++;
+        console.log("Quiz number added");
+    } else {
+        numberOfQuestions = 0;
+        console.log("Quiz number NOT added");
+    }
     function createQuestion() {
         // Collection data from question form and creating an array.
         var question = {
@@ -331,9 +334,9 @@ app.post('/createquizquestions', function (req, res) {
 };
     function redirect() {
         if(numberOfQuestions > 0) {
-            return res.redirect("/createquiz");
+            return res.redirect(req.get("referer"));
         } else {
-            return res.redirect(req.get('referer'));
+            return res.redirect('/createquiz');
         }
     }
 
