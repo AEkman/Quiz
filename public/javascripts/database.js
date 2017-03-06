@@ -30,17 +30,15 @@ function User() {
     };
 
     // Creating a user function
-    this.createUser = function (user, res) {
+    this.createUser = function (user) {
         console.log(user);
         connection.acquire(function (err, con) {
             con.query("INSERT INTO user SET ?", user, function (err) {
                 con.release();
                 if(err) {
                     console.log(err);
-                    res.send({status: 1, message: 'User creaton failed'});
                 } else {
                     console.log('Usercreated successfully');
-                    res.send({status: 0, message: 'User created successfully'});
                 }
             });
         });
@@ -54,10 +52,8 @@ function User() {
                 con.release();
                 if(err) {
                     console.log(err);
-                    // res.send({status: 1, message: 'Quest creation failed'});
                 } else {
                     console.log('Question created successfully');
-                    // res.send({status: 0, message: 'Quest created successfully'});
                 }
             });
         });
@@ -86,10 +82,8 @@ function User() {
                 con.release();
                 if(err) {
                     console.log(err);
-                    // res.send({status: 1, message: 'Quiz create failed'});
                 } else {
                     con.query("SELECT LAST_INSERT_ID();", function (err, result) {
-                    // res.send(result);
                 });
                 }
             });

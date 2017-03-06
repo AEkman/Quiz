@@ -228,6 +228,68 @@ app.get('/createquizquestions', function(req, res) {
     });
 });
 
+var stored_password;
+var stored_name;
+var stored_accountLevel
+app.post('/', function (req, res) {
+    var login = {
+        name: req.body.name,
+        password: req.body.password
+    };
+    console.log(login);
+    stored_name = login.name;
+    function getUserPassword() {
+        connection.acquire(function (err, con) {
+            con.query('SELECT password FROM user WHERE name = ?', stored_name, function (err, res) {
+                con.release();
+                if (err) {
+                    console.log(err);
+                } else {
+                    obj = JSON.parse(JSON.stringify(res));
+                    obj.forEach(function (resPassword) {
+                        stored_password = resPassword.password;
+                    });
+                    console.log(login.password);
+                    console.log("Stored Password " + stored_password);
+                }
+            });
+            if(stored_password !== null){
+                connection.acquire(function (err, con) {
+                    con.query('SELECT accountLevel FROM user WHERE name = ?', stored_name, function (err, res) {
+                        if (err) {
+                            consol.log(err);
+                        } else {
+                            obj = JSON.parse(JSON.stringify(res));
+                            obj.forEach(function (resAccaountLevel) {
+                               stored_accountLevel = resAccaountLevel.accountLevel;
+                            });
+                            console.log(stored_accountLevel);
+                        }
+                    });
+                });
+            }
+        });
+    }
+    function checkPassword() {
+
+        if (login.password == stored_password) {
+            if(stored_accountLevel == "Creator") {
+                return res.redirect('/creator');
+            } else if (stored_accountLevel == "Admin") {
+                return res.redirect('/admin');
+            } else {
+                return res.redirect('/user');
+            }
+        } else {
+            console.log("Access Denied");
+            return res.redirect(req.get("referer"));
+        }
+    }
+    getUserPassword();
+    setTimeout(checkPassword, 500);
+    // stored_password = "";
+});
+
 /*  send the input data from settings --> createUser --> database */
 app.post('/settings', function(req, res) {
     var user = {
@@ -237,7 +299,8 @@ app.post('/settings', function(req, res) {
         groups: req.body.groups,
         accountLevel: req.body.accountLevel
     };
-    databaseFunctions.createUser(user, res);
+    databaseFunctions.createUser(user);
+    res.redirect(req.get('referer'));
 });
 
 var stored_quizId;
