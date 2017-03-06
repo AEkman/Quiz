@@ -97,33 +97,22 @@ app.get('/takequiz/:id', function(req, res) {
 });
 
 app.post('/takequiz/:id', function(req, res) {
-try {
-    var answers = req.body.answer;
+    var points = req.body.points;
+
+    var postQuery = {quizTakenMail: 'test', QuizTakenQid: '3' , results: points, elapTimes: '1000-01-01 00:00:00'};
+    console.log(postQuery);
     console.log(answers);
 
-    connection.acquire(function(err, con){
-        if(err) {
-            // console.log('SQL Connection error: ', err);
-            return next(err);
-        } else {
-            // var insertSql = "INSERT INTO quiz SET ?";
-            // var insertValues = {
-            //     answerId: req.Obj.name
-            // };
-            // var query = con.query(insertSql, insertValues, function(err, result) {
-            //     if (err) {
-            //         console.error('SWL error: ', err);
-            //         return next(err);
-            //     }
-            //     // var quizId = result.inesrtId;
-            // });
-        }
+    connection.acquire(function (err, con) {
+        con.query("INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elaspTimes) SET ?", postQuery, function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+
+            }
         });
-    }
-    catch(ex) {
-    console.error("Internal error: " + ex);
-    return next(ex);
-    }
+    });
 });
 
 /* Results */

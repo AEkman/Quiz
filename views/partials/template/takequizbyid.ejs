@@ -10,7 +10,7 @@
             <h3><%= question.question %></h3>
             <% answers.forEach(function (ans) { %>
             <% if (ans.answerQuestionid === question.questionId) { %>
-            <input type="checkbox" name="answer" id="><%= ans.answerId %>" value="0"><%= ans.answer %><br>
+            <input type="checkbox" name="answer" id="><%= ans.answerId %>" value="><%= ans.correct %>"><%= ans.answer %><br>
             <% } %>
             <% }) %>
         </div> <!-- well -->
