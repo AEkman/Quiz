@@ -229,18 +229,18 @@ app.get('/createquizquestions', function(req, res) {
 });
 
 var stored_password;
-var stored_name;
-var stored_accountLevel
+var stored_accountLevel;
+var stored_mail;
 app.post('/', function (req, res) {
     var login = {
-        name: req.body.name,
+        mail: req.body.mail,
         password: req.body.password
     };
     console.log(login);
-    stored_name = login.name;
+    stored_mail = login.mail;
     function getUserPassword() {
         connection.acquire(function (err, con) {
-            con.query('SELECT password FROM user WHERE name = ?', stored_name, function (err, res) {
+            con.query('SELECT password FROM user WHERE mail = ?', stored_mail, function (err, res) {
                 con.release();
                 if (err) {
                     console.log(err);
@@ -249,13 +249,12 @@ app.post('/', function (req, res) {
                     obj.forEach(function (resPassword) {
                         stored_password = resPassword.password;
                     });
-                    console.log(login.password);
                     console.log("Stored Password " + stored_password);
                 }
             });
-            if(stored_password !== null){
+            if(stored_password !== null || stored_password !== "undefined"){
                 connection.acquire(function (err, con) {
-                    con.query('SELECT accountLevel FROM user WHERE name = ?', stored_name, function (err, res) {
+                    con.query('SELECT accountLevel FROM user WHERE mail = ?', stored_mail, function (err, res) {
                         if (err) {
                             consol.log(err);
                         } else {
@@ -263,7 +262,7 @@ app.post('/', function (req, res) {
                             obj.forEach(function (resAccaountLevel) {
                                stored_accountLevel = resAccaountLevel.accountLevel;
                             });
-                            console.log(stored_accountLevel);
+                            console.log("Account level: " + stored_accountLevel);
                         }
                     });
                 });
@@ -271,7 +270,6 @@ app.post('/', function (req, res) {
         });
     }
     function checkPassword() {
-
         if (login.password == stored_password) {
             if(stored_accountLevel == "Creator") {
                 return res.redirect('/creator');
@@ -287,7 +285,6 @@ app.post('/', function (req, res) {
     }
     getUserPassword();
     setTimeout(checkPassword, 500);
-    // stored_password = "";
 });
 
 /*  send the input data from settings --> createUser --> database */
