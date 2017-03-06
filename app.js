@@ -98,8 +98,9 @@ app.get('/takequiz/:id', function(req, res) {
 
 app.post('/takequiz/:id', function(req, res) {
 try {
-    var reqObj = req.body;
-    console.log(res);
+    var answers = req.body.answer;
+    console.log(answers);
+
     connection.acquire(function(err, con){
         if(err) {
             // console.log('SQL Connection error: ', err);
@@ -127,9 +128,20 @@ try {
 
 /* Results */
 app.get('/results', function(req, res) {
-    res.render('results', {
-        title: 'Results',
-        classname: 'results'
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM quiztaken', function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                loadResults = JSON.parse(JSON.stringify(rows));
+                res.render('results', {
+                    loadResults:loadResults,
+                    title: 'Results',
+                    classname: 'results'
+                });
+            }
+        });
     });
 });
 
