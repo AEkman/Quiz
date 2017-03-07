@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS user;
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("admin@admin.se", "Admin Adminsson", "admin" ,"Group 1", "Admin");
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("creator@creator.se", "Creator Creatorson", "creator" ,"Group 2", "Creator");
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("user@user.se", "User Usersson", "user" ,"Group 3", "User");
-	
+	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES('eric@andresen.codes', 'Eric Andresen', 'admin' ,'Masters', 'Admin');
 
 
 DROP TABLE IF EXISTS quiz;
