@@ -1,8 +1,8 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <% loadquizes.forEach(function (quizes) { %>
-        <a href="/takequiz/<%= quizes.quizId %>"><div class="well well-sm">
+        <a href="/takequiz/" class="disabled"<%= quizes.quizId %>><div class="well well-sm">
                 <h2><%= quizes.quizName %></h2>
-                <p>Added:<%= quizes.dateCreated %></p>
+                <p>Avaible until: <%= quizes.dateFinished %></p>
         </div></a>
     <% }) %>
 </div>

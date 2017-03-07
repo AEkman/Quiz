@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    var points;
+    var points = 0;
     $("form input:checkbox").on('change', function() {
         if ( $(this).is(":checked") ) {
             if ($(this).val = 1) {
@@ -10,5 +10,6 @@ $( document ).ready(function() {
         } else if ( $(this).not(":checked") ) {
 
         }
+        alert(points);
     });
 });

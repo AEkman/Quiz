@@ -16,8 +16,9 @@ var answers = [];
 var numberOfQuestions = 0;
 var stored_password;
 var stored_accountLevel;
-var stored_mail;
+var stored_mail = "info@andreasekman.com";
 var stored_quizId;
+var stored_currentQuizId = 1;
 
 // Middleware to log all requests
 // app.use(function(req, res, next) {
@@ -73,6 +74,8 @@ app.get('/takequiz', function(req, res) {
 app.get('/takequiz/:id', function(req, res) {
     connection.acquire(function (err, con) {
         var quizId = req.params.id;
+        stored_currentQuizId = req.params.id;
+
         con.query('SELECT * FROM quiz WHERE quizId = ?', quizId, function (err, qid) {
             if(err) {
                 console.log(err);
@@ -106,14 +109,12 @@ app.get('/takequiz/:id', function(req, res) {
 });
 
 app.post('/takequiz/:id', function(req, res) {
-    var points = req.body.points;
-
-    var postQuery = {quizTakenMail: 'test', QuizTakenQid: '3' , results: points, elapTimes: '1000-01-01 00:00:00'};
+    var postQuery = {quizTakenMail: stored_mail, QuizTakenQid: stored_currentQuizId , results: 3, elapTimes: 5};
     console.log(postQuery);
-    console.log(answers);
+
 
     connection.acquire(function (err, con) {
-        con.query("INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elaspTimes) SET ?", postQuery, function (err, rows) {
+        con.query("INSERT INTO quizTaken SET ?", postQuery, function (err, rows) {
             con.release();
             if(err) {
                 console.log(err);

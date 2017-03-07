@@ -9,15 +9,6 @@ $(document).ready(function(){
  //Get password from login.ejs
  var formpassword = document.getElementById("password").value;
 
- //Dummydata
- var dummydata = { "user" : [
-     { "mail" : "elev@mail.com", "password": "elev", "accountLevel" : "1"},
-     { "mail" : "teacher@mail.com", "password": "teacher", "accountLevel" : "2"},
-     {"mail" : "admin@mail.com", "password": "admin", "accountLevel" : "3"}
-     ] };
-
- var dummyobj = JSON.stringify(dummydata);
-
  console.log("Email from input  "+email);
  console.log("Password from input  "+formpassword);
 

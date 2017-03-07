@@ -85,9 +85,9 @@ DROP TABLE IF EXISTS quiztaken;
 	quizTakenMail VARCHAR(100) NOT NULL,
 	quizTakenQid INT NOT NULL,
 	results SMALLINT NOT NULL,
-	elapTimes DATETIME,
+	elapTimes INT NOT NULL,
 	FOREIGN KEY (quizTakenQid) REFERENCES question(questionId),
 	FOREIGN KEY (quizTakenMail) REFERENCES user(mail)
 	);
 
-	INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elapTimes) VALUES ("info@andreasekman.com",1,39,'1000-01-01 00:00:00');
+	INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elapTimes) VALUES ("info@andreasekman.com",1,39,'10');
