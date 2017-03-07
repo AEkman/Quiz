@@ -187,25 +187,6 @@ app.delete('/settings/:id', function(req, res) {
     // res.query till databas(variabel);
 });
 
-/*  countdownclock */
-app.get('/countdownclock', function(req, res) {
-    connection.acquire(function (err, con) {
-        con.query('SELECT * FROM quiz', function (err, rows) {
-            con.release();
-            if(err) {
-                console.log(err);
-            } else {
-                obj = JSON.parse(JSON.stringify(rows));
-                res.render('settings', {
-                    obj:obj,
-                    title: 'Settings',
-                    classname: 'settings'
-                });
-            }
-        });
-    });
-});
-
 /* User */
 app.get('/user', function(req, res) {
     res.render('user', {
