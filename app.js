@@ -19,6 +19,7 @@ var stored_accountLevel;
 var stored_mail = "info@andreasekman.com";
 var stored_quizId;
 var stored_currentQuizId = 1;
+var stored_quizScore;
 
 // Middleware to log all requests
 // app.use(function(req, res, next) {
@@ -109,8 +110,13 @@ app.get('/takequiz/:id', function(req, res) {
 });
 
 app.post('/takequiz/:id', function(req, res) {
-    var postQuery = {quizTakenMail: stored_mail, QuizTakenQid: stored_currentQuizId , results: 3, elapTimes: 5};
-    console.log(postQuery);
+
+    console.log(req.params.stored_quizScore);
+    var test444 = req.params.stored_quizScore;
+
+    console.log(test444);
+
+    var postQuery = {quizTakenMail: stored_mail, QuizTakenQid: stored_currentQuizId , results: 5, elapTimes: 5};
 
 
     connection.acquire(function (err, con) {
