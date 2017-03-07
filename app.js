@@ -10,6 +10,15 @@ app.use(body.json()); // Parses html data to JSON
 app.use(body.urlencoded({extended: true})); // If data is sent URL encoded, parse to JSON
 connection.init();
 
+//Instance variabels
+var stored_questionID;
+var answers = [];
+var numberOfQuestions = 0;
+var stored_password;
+var stored_accountLevel;
+var stored_mail;
+var stored_quizId;
+
 // Middleware to log all requests
 // app.use(function(req, res, next) {
 //     console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
@@ -228,9 +237,7 @@ app.get('/createquizquestions', function(req, res) {
     });
 });
 
-var stored_password;
-var stored_accountLevel;
-var stored_mail;
+
 app.post('/', function (req, res) {
     var login = {
         mail: req.body.mail,
@@ -300,7 +307,7 @@ app.post('/settings', function(req, res) {
     res.redirect(req.get('referer'));
 });
 
-var stored_quizId;
+
 
 /*  send input data from Create quiz form */
 app.post('/createquiz', function (req, res) {
@@ -335,9 +342,7 @@ app.post('/createquiz', function (req, res) {
     return res.redirect('/createquizquestions');
 });
 
-var stored_questionID;
-var answers = [];
-var numberOfQuestions = 0;
+
 //Taking in form for creating a question and connected answers.
 app.post('/createquizquestions', function (req, res) {
     //Checking what button were pressed.
