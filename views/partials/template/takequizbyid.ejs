@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10">
                 <% loadQuizes.forEach(function (quizes) { %>
-                    <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
+                    <h2 id="replacewithscore"><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
                     <script language="JavaScript">
                         window.onload = function () {
                             countdown(<%= quizes.times %>);
@@ -21,7 +21,7 @@
                 <h3><%= question.question %></h3>
             <% answers.forEach(function (ans) { %>
             <% if (ans.answerQuestionid === question.questionId) { %>
-            <input type="checkbox" class="answer" id="><%= ans.answerId %>" value="<%= ans.correct %>"><%= ans.answer %><br>
+            <input type="checkbox" class="answer" id="><%= ans.answerId %>" value="<%= ans.correct %>"><label><%= ans.answer %></label><br>
             <% } %>
             <% }) %>
         </div> <!-- well -->

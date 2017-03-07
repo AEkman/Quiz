@@ -11,8 +11,10 @@ function recalculate(){
     $("input[type=checkbox]:checked").each(function(){
         if($(this).val()==1) {
             obj.stored_quizScore += parseInt($(this).val());
+            // $(this).css("margin", "2px");
         } else {
             obj.stored_quizScore --;
+
         }
     });
 
@@ -28,6 +30,13 @@ function recalculate(){
         }
     });
 
+    $("#replacewithscore").replaceWith( "<h2>Quiz Finished! - You scored " + obj.stored_quizScore +"</h2>" );
+
+    if ($("input[type=checkbox]").val()==0) {
+        $(this).css("color", "red");
+    } else {
+
+    }
     console.log(obj);
 }
 
