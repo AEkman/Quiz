@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="649d3bab-62be-4423-b45e-1e6dea7795bb" name="Default" comment="">
+    <list default="true" id="649d3bab-62be-4423-b45e-1e6dea7795bb" name="Default" comment="Added logout">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/takequiz.js" afterPath="$PROJECT_DIR$/public/javascripts/takequiz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" afterPath="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/takequizbyid.ejs" afterPath="$PROJECT_DIR$/views/partials/template/takequizbyid.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Quizdatabase.sql" afterPath="$PROJECT_DIR$/Quizdatabase.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -585,7 +582,7 @@
       <workItem from="1488456638822" duration="20128000" />
       <workItem from="1488535703594" duration="18847000" />
       <workItem from="1488798859257" duration="15160000" />
-      <workItem from="1488879307012" duration="11181000" />
+      <workItem from="1488879307012" duration="11397000" />
     </task>
     <task id="LOCAL-00001" summary="Added shortcut for installation.">
       <created>1487766448925</created>
@@ -741,11 +738,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488888265164</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added logout">
+      <created>1488892179070</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1488892179070</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137292000" />
+    <option name="totallyTimeSpent" value="137508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
