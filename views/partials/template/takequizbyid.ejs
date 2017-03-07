@@ -2,7 +2,7 @@
     <h1>
         <% loadQuizes.forEach(function (quizes) { %>
             <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
-        <!--<div class="starttime hidden" id="<%= quizes.times %>"><p>Test time</p></div> $(#starttime).val-->
+        <div class="startTime hidden" id="<%= quizes.times %>"><p>Test time</p></div>
         <% }) %>
         <div id="countdown"><p id="actualtime"></p></div>
     </h1>

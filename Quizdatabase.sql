@@ -95,3 +95,5 @@ DROP TABLE IF EXISTS quiztaken;
 	);
 
 	INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elapTimes) VALUES ("info@andreasekman.com",1,39,'10');
+
+select * from quiz;
