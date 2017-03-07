@@ -1,10 +1,18 @@
 <div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <h1>
-        <% loadQuizes.forEach(function (quizes) { %>
-            <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
-        <div class="startTime hidden" id="<%= quizes.times %>"><p>Test time</p></div>
-        <% }) %>
-        <div id="countdown"><p id="actualtime"></p></div>
+        <div class="row">
+            <div class="col-md-10">
+                <% loadQuizes.forEach(function (quizes) { %>
+                    <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
+                    <script language="JavaScript">
+                        window.onload = function () {
+                            countdown(<%= quizes.times %>);
+                        }
+                    </script>
+                <% }) %>
+            </div>
+        <div class="col-md-2" id="countdown"></div>
+        </div>
     </h1>
     <div id="answer"></div>
     <form action="/takequiz/:id" method="POST" id="takequizform">
@@ -21,3 +29,5 @@
         <input type="submit" class="btn btn-lg btn-success center-block" value="Submit">
     </form> <!-- form -->
 </div> <!-- content -->
+<script>
+</script>

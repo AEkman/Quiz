@@ -1,28 +1,22 @@
-var time;
-loadQuizes.forEach(function (quiz) {
-    time = quiz.times;
-});
-
-function countdown(minutes) { // we only use minutes as we have chosen so..
+function countdown(minutes) {
 
     var seconds = 60;
-    var mins = minutes; // get the approciate link to the input.
+    var minutes;
     function downcount() {
         var counter = document.getElementById("countdown");
-        var current_minutes = mins-1; // count down minutes
-        seconds--; // counting down seconds
-        counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); // displays the remaoining time
-        if( seconds > 0 ) {  // if statement that check for decreased time, that minutes is counted dowwn.
-            setTimeout(downcount, 100);
+        var current_minutes = minutes-1;
+        seconds--;
+        counter.innerHTML = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(downcount, 1000);
         } else {
-            if(mins > 1){
-                countdown(mins-1);
+            if(minutes > 1){
+                countdown(minutes-1);
             }
         }
-        if (seconds === 0){
+        if (minutes === 1 && seconds === 0){
             window.location.replace("/results");
         }
     }
     downcount();
 }
-countdown(time);
