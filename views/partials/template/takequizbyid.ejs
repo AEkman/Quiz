@@ -4,6 +4,7 @@
             <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
         <!--<div class="starttime hidden" id="<%= quizes.times %>"><p>Test time</p></div> $(#starttime).val-->
         <% }) %>
+        <div id="countdown"><p id="actualtime"></p></div>
     </h1>
 
     <form action="/takequiz/:id" method="POST" id="takequizform">
