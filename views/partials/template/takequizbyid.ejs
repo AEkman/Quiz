@@ -6,14 +6,14 @@
         <% }) %>
         <div id="countdown"><p id="actualtime"></p></div>
     </h1>
-
+    <div id="answer"></div>
     <form action="/takequiz/:id" method="POST" id="takequizform">
         <% quizQuestions.forEach(function (question) { %>
         <div class="well well-sm">
                 <h3><%= question.question %></h3>
             <% answers.forEach(function (ans) { %>
             <% if (ans.answerQuestionid === question.questionId) { %>
-            <input type="checkbox" id="><%= ans.answerId %>" value="<%= ans.correct %>"><%= ans.answer %><br>
+            <input type="checkbox" class="answer" id="><%= ans.answerId %>" value="<%= ans.correct %>"><%= ans.answer %><br>
             <% } %>
             <% }) %>
         </div> <!-- well -->

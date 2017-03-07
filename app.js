@@ -111,8 +111,8 @@ app.get('/takequiz/:id', function(req, res) {
 
 app.post('/takequiz/:id', function(req, res) {
 
-    console.log(req.params.stored_quizScore);
-    var test444 = req.params.stored_quizScore;
+    console.log(req.params.name);
+    var test444 = req.params.name;
 
     console.log(test444);
 
