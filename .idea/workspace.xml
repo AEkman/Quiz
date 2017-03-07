@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="649d3bab-62be-4423-b45e-1e6dea7795bb" name="Default" comment="Uppdated the links so now when you create a quiz you are being directed to creating question page for that quiz.">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Quizdatabase.txt" afterPath="" />
+    <list default="true" id="649d3bab-62be-4423-b45e-1e6dea7795bb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Quizdatabase.sql" afterPath="$PROJECT_DIR$/Quizdatabase.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/loginvalidation.js" afterPath="$PROJECT_DIR$/public/javascripts/loginvalidation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/takequiz.js" afterPath="$PROJECT_DIR$/public/javascripts/takequiz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.ejs" afterPath="$PROJECT_DIR$/views/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/createquiz.ejs" afterPath="$PROJECT_DIR$/views/partials/template/createquiz.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" afterPath="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/login.ejs" afterPath="$PROJECT_DIR$/views/partials/template/login.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin.ejs" afterPath="$PROJECT_DIR$/views/admin.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/createquiz.ejs" afterPath="$PROJECT_DIR$/views/createquiz.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/createquizquestions.ejs" afterPath="$PROJECT_DIR$/views/createquizquestions.ejs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/navigationadmin.ejs" afterPath="$PROJECT_DIR$/views/partials/template/navigationadmin.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/navigationcreator.ejs" afterPath="$PROJECT_DIR$/views/partials/template/navigationcreator.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/navigationuser.ejs" afterPath="$PROJECT_DIR$/views/partials/template/navigationuser.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/partials/template/userresults.ejs" afterPath="$PROJECT_DIR$/views/partials/template/userresults.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,11 +25,41 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="takequizbyid.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/takequizbyid.ejs">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="453">
+              <caret line="420" column="25" lean-forward="true" selection-start-line="420" selection-start-column="25" selection-end-line="420" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/admin.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createquiz.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/createquiz.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createquizquestions.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/createquizquestions.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -73,11 +95,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loginvalidation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="loginvalidation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/loginvalidation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigationadmin.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/template/navigationadmin.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/profile.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -110,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/partials/page/head.ejs" />
         <option value="$PROJECT_DIR$/views/partials/page/jsdefaults.ejs" />
         <option value="$PROJECT_DIR$/views/partials/page/header.ejs" />
         <option value="$PROJECT_DIR$/views/partials/page/footer.ejs" />
@@ -122,7 +163,6 @@
         <option value="$PROJECT_DIR$/css/login.css" />
         <option value="$PROJECT_DIR$/views/partials/template/footer.ejs" />
         <option value="$PROJECT_DIR$/views/partials/template/createuset.ejs" />
-        <option value="$PROJECT_DIR$/views/admin.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/mysqlconnection.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/creator.ejs" />
@@ -144,15 +184,11 @@
         <option value="$PROJECT_DIR$/views/partials/template/createquestion.ejs" />
         <option value="$PROJECT_DIR$/Quizdatabase.sql" />
         <option value="$PROJECT_DIR$/views/partials/template/createAnswer.ejs" />
-        <option value="$PROJECT_DIR$/views/createquiz.ejs" />
-        <option value="$PROJECT_DIR$/views/createquizquestions.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/database.js" />
         <option value="$PROJECT_DIR$/views/partials/template/userresults.ejs" />
-        <option value="$PROJECT_DIR$/views/partials/template/navigationadmin.ejs" />
         <option value="$PROJECT_DIR$/views/partials/template/navigationcreator.ejs" />
         <option value="$PROJECT_DIR$/views/partials/template/navigationuser.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/takequiz.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/partials/template/createquiz.ejs" />
         <option value="$PROJECT_DIR$/views/partials/template/fetchquizes.ejs" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
@@ -161,6 +197,12 @@
         <option value="$PROJECT_DIR$/views/user.ejs" />
         <option value="$PROJECT_DIR$/views/partials/template/head.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/loginvalidation.js" />
+        <option value="$PROJECT_DIR$/views/logout.ejs" />
+        <option value="$PROJECT_DIR$/views/partials/template/navigationadmin.ejs" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/admin.ejs" />
+        <option value="$PROJECT_DIR$/views/createquiz.ejs" />
+        <option value="$PROJECT_DIR$/views/createquizquestions.ejs" />
       </list>
     </option>
   </component>
@@ -332,6 +374,11 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andreas\Documents\GitHub\Quiz\views" />
+    </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -541,7 +588,7 @@
       <workItem from="1488456638822" duration="20128000" />
       <workItem from="1488535703594" duration="18847000" />
       <workItem from="1488798859257" duration="15160000" />
-      <workItem from="1488879307012" duration="6220000" />
+      <workItem from="1488879307012" duration="7263000" />
     </task>
     <task id="LOCAL-00001" summary="Added shortcut for installation.">
       <created>1487766448925</created>
@@ -683,11 +730,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488812212546</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Take quiz now sends data to server with data.">
+      <created>1488887239022</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1488887239022</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132331000" />
+    <option name="totallyTimeSpent" value="133374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -762,7 +816,8 @@
     <MESSAGE value="Uppdated the links so now when you create a quiz you are being directed to creating question page for that quiz." />
     <MESSAGE value="Made it possible to create any number of questions per Quiz" />
     <MESSAGE value="Created a login script and sending user according to there account level." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a login script and sending user according to there account level." />
+    <MESSAGE value="Take quiz now sends data to server with data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Take quiz now sends data to server with data." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -771,20 +826,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/profile.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/results.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -865,13 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/test.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -893,13 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/createquiz.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="3" lean-forward="false" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/template/createquestion.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -911,14 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="37" column="30" lean-forward="false" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/createquizquestions.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -978,14 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -998,14 +1009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/partials/template/navigationadmin.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1116,8 +1119,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/loginvalidation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/profile.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/partials/template/navigationadmin.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/logout.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createquiz.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/createquizquestions.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="420" column="25" lean-forward="true" selection-start-line="420" selection-start-column="25" selection-end-line="420" selection-end-column="25" />
           <folding />
         </state>
       </provider>

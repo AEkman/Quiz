@@ -413,6 +413,14 @@ app.post('/createquizquestions', function (req, res) {
     answers = [];
 });
 
+/* Logout */
+app.get('/logout', function(req, res) {
+    stored_mail = null;
+    res.render('index', {
+        title: 'Home',
+        classname: 'home'
+    });
+});
 
 // Start server on port 3000
 app.set('port', process.env.PORT || 3000); // use port 3000 unless there exists a preconfigured port
