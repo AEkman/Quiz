@@ -1,6 +1,6 @@
  
- -- source C:\Users\Daniel\Documents\GitHub\Quiz\Quizdatabase.sql
- -- source C:\Users\Daniel\Documents\GitHub\Quiz\testdataSQL.sql
+ -- source C:\Users\Andreas\Documents\GitHub\Quiz\Quizdatabase.sql
+ -- source C:\Users\Andreas\Documents\GitHub\Quiz\testdataSQL.sql
 
 INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("daniel@com", "daniel", "password","alpha", "creator");
 INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('ALBAN', '2008-06-13', 25, 20);

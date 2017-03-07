@@ -12,23 +12,29 @@
     <% include partials/template/navigationadmin.ejs %>
     <div class="row">
         <h1>Create Quiz!</h1>
-        <p>Let's create some ultra cool quizes!</p>
-        <p>You are on page <%= title %></p>
-
-        <form method="post"  action="/createquizquestions">
+        <p>Let's create some quizes!</p>
+        <form method="post">
             <div class="form-group">
                 <% include partials/template/createquestion.ejs %>
                 <% include partials/template/createAnswer.ejs %>
+                <% include partials/template/createAnswer.ejs %>
+                <% include partials/template/createAnswer.ejs %>
+                <% include partials/template/createAnswer.ejs %>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-lg">Create Quiz</button>
+                <button type="submit" name="button1" formaction="/createquizquestions" value="0" class="btn btn-primary btn-lg btn-success">Add Another Question</button>
+                <button type="submit" name="button2" formaction="/createquizquestions" value="1" class="btn btn-primary btn-lg btn-success">Create Quiz</button>
             </div>
         </form>
-    </div><!-- span12 -->
+    </div><!-- row -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
-
-
+<script src="../app.js"></script>
+<script type="text/javascript">
+    document.getElementById("quizDone").onclick = function () {
+        location.href = "/views/createquiz.ejs";
+    }
+</script>
 <% include partials/template/jsdefaults.ejs %>
 </body>
 </html>

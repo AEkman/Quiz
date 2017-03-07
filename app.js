@@ -5,9 +5,16 @@ var databaseFunctions = require('./public/javascripts/database');
 
 // Start express
 var app = express();
-app.use(body.urlencoded({extended: true}));
-app.use(body.json());
+
+app.use(body.json()); // Parses html data to JSON
+app.use(body.urlencoded({extended: true})); // If data is sent URL encoded, parse to JSON
 connection.init();
+
+// Middleware to log all requests
+// app.use(function(req, res, next) {
+//     console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
+//     next();
+// });
 
 // Set static folder
 app.use(express.static(__dirname + '/public'));
@@ -35,19 +42,95 @@ app.get('/createquiz', function(req, res) {
     });
 });
 
-/* Take Quiz Quiz */
+/* Take Quiz */
 app.get('/takequiz', function(req, res) {
-    res.render('takequiz', {
-        title: 'Take Quiz',
-        classname: 'takequiz'
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM quiz', function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                loadquizes = JSON.parse(JSON.stringify(rows));
+                res.render('takeQuiz', {
+                    loadquizes:loadquizes,
+                    title: 'takequiz',
+                    classname: 'takequiz'
+                });
+            }
+        });
+    });
+});
+
+app.get('/takequiz/:id', function(req, res) {
+    connection.acquire(function (err, con) {
+        var quizId = req.params.id;
+        con.query('SELECT * FROM quiz WHERE quizId = ?', quizId, function (err, qid) {
+            if(err) {
+                console.log(err);
+            } else {
+                con.query('SELECT * FROM question WHERE questionQuizId = ?', quizId, function (err, question) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        con.query('SELECT * FROM answers WHERE answerQuestionid IN (SELECT questionId FROM question WHERE questionQuizid = ?)', quizId, function (err, answer) {
+                            con.release();
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                loadQuizes = JSON.parse(JSON.stringify(qid));
+                                quizQuestions = JSON.parse(JSON.stringify(question));
+                                answers = JSON.parse(JSON.stringify(answer));
+                                res.render('takequizbyid', {
+                                    loadQuizes: loadQuizes,
+                                    quizQuestions: quizQuestions,
+                                    answers: answers,
+                                    title: 'Take quiz',
+                                    classname: 'takequizbyid'
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+});
+
+app.post('/takequiz/:id', function(req, res) {
+    var points = req.body.points;
+
+    var postQuery = {quizTakenMail: 'test', QuizTakenQid: '3' , results: points, elapTimes: '1000-01-01 00:00:00'};
+    console.log(postQuery);
+    console.log(answers);
+
+    connection.acquire(function (err, con) {
+        con.query("INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elaspTimes) SET ?", postQuery, function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+
+            }
+        });
     });
 });
 
 /* Results */
 app.get('/results', function(req, res) {
-    res.render('results', {
-        title: 'Results',
-        classname: 'results'
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM quiztaken', function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                loadResults = JSON.parse(JSON.stringify(rows));
+                res.render('results', {
+                    loadResults:loadResults,
+                    title: 'Results',
+                    classname: 'results'
+                });
+            }
+        });
     });
 });
 
@@ -63,6 +146,41 @@ app.get('/profile', function(req, res) {
 app.get('/settings', function(req, res) {
     connection.acquire(function (err, con) {
         con.query('SELECT * FROM user', function (err, rows) {
+            if(err) {
+                console.log(err);
+            } else {
+                con.query('SELECT * FROM quiz', function (err, quizes) {
+                    con.release();
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        obj = JSON.parse(JSON.stringify(rows));
+                        quiz = JSON.parse(JSON.stringify(quizes));
+                        res.render('settings', {
+                            obj:obj,
+                            quiz:quiz,
+                            title: 'Settings',
+                            classname: 'settings'
+                        });
+                    }
+                });
+            }
+        });
+    });
+});
+
+app.delete('/settings/:id', function(req, res) {
+    // sätt in query som variabel
+    // variabel = variabel.filter(function(definition) {
+    //     return definition.term.toLowerCase() !== req.params.term.toLowerCase();
+    // });
+    // res.query till databas(variabel);
+});
+
+/*  countdownclock */
+app.get('/countdownclock', function(req, res) {
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM quiz', function (err, rows) {
             con.release();
             if(err) {
                 console.log(err);
@@ -76,8 +194,6 @@ app.get('/settings', function(req, res) {
             }
         });
     });
-
-
 });
 
 /* User */
@@ -104,6 +220,7 @@ app.get('/admin', function(req, res) {
     });
 });
 
+/* Create question for quiz page */
 app.get('/createquizquestions', function(req, res) {
     res.render('createquizquestions', {
         title: 'createquizquestions',
@@ -111,8 +228,67 @@ app.get('/createquizquestions', function(req, res) {
     });
 });
 
+var stored_password;
+var stored_accountLevel;
+var stored_mail;
+app.post('/', function (req, res) {
+    var login = {
+        mail: req.body.mail,
+        password: req.body.password
+    };
+    console.log(login);
+    stored_mail = login.mail;
+    function getUserPassword() {
+        connection.acquire(function (err, con) {
+            con.query('SELECT password FROM user WHERE mail = ?', stored_mail, function (err, res) {
+                con.release();
+                if (err) {
+                    console.log(err);
+                } else {
+                    obj = JSON.parse(JSON.stringify(res));
+                    obj.forEach(function (resPassword) {
+                        stored_password = resPassword.password;
+                    });
+                    console.log("Stored Password " + stored_password);
+                }
+            });
+            if(stored_password !== null || stored_password !== "undefined"){
+                connection.acquire(function (err, con) {
+                    con.query('SELECT accountLevel FROM user WHERE mail = ?', stored_mail, function (err, res) {
+                        if (err) {
+                            consol.log(err);
+                        } else {
+                            obj = JSON.parse(JSON.stringify(res));
+                            obj.forEach(function (resAccaountLevel) {
+                               stored_accountLevel = resAccaountLevel.accountLevel;
+                            });
+                            console.log("Account level: " + stored_accountLevel);
+                        }
+                    });
+                });
+            }
+        });
+    }
+    function checkPassword() {
+        if (login.password == stored_password) {
+            if(stored_accountLevel == "Creator") {
+                return res.redirect('/creator');
+            } else if (stored_accountLevel == "Admin") {
+                return res.redirect('/admin');
+            } else {
+                return res.redirect('/user');
+            }
+        } else {
+            console.log("Access Denied");
+            return res.redirect(req.get("referer"));
+        }
+    }
+    getUserPassword();
+    setTimeout(checkPassword, 500);
+});
+
 /*  send the input data from settings --> createUser --> database */
-app.post('/settings', function(req, ress) {
+app.post('/settings', function(req, res) {
     var user = {
         mail: req.body.mail,
         name: req.body.name,
@@ -120,35 +296,117 @@ app.post('/settings', function(req, ress) {
         groups: req.body.groups,
         accountLevel: req.body.accountLevel
     };
-    databaseFunctions.createUser(user, ress);
+    databaseFunctions.createUser(user);
+    res.redirect(req.get('referer'));
 });
+
+var stored_quizId;
+
 /*  send input data from Create quiz form */
 app.post('/createquiz', function (req, res) {
-    var quiz = {
-        quizName: req.body.quizName,
-        dateFinished: req.body.dateFinished,
-        times: req.body.times,
-        score: req.body.score
+    function createQuiz() {
+        var quiz = {
+            quizName: req.body.quizName,
+            dateFinished: req.body.dateFinished,
+            times: req.body.times,
+            score: req.body.score
+        };
+        databaseFunctions.createQuiz(quiz);
     };
-    databaseFunctions.createQuiz(quiz, res);
-});
-var questionID = 1;
-var answerID = 1;
+    function getQuizId() {
+        connection.acquire(function (err, con) {
+        con.query('SELECT quizId FROM quizdb.quiz ORDER BY quizId DESC LIMIT 1', function (err, quizIdres) {
+            con.release();
+            if (err) {
+                console.log(err)
+            } else {
+                obj = JSON.parse(JSON.stringify(quizIdres));
+                obj.forEach(function (id) {
+                    stored_quizId = id.quizId;
+                    console.log("Stored QuizId: " + stored_quizId);
+                });
+            }
+        });
+    });
 
+};
+    createQuiz();
+    setTimeout(getQuizId, 500);
+    return res.redirect('/createquizquestions');
+});
+
+var stored_questionID;
+var answers = [];
+var numberOfQuestions = 0;
+//Taking in form for creating a question and connected answers.
 app.post('/createquizquestions', function (req, res) {
-   var question = {
-       question: req.body.question,
-       questionQuizid: questionID
-   };
-   var answer = {
-       answer: req.body.answer,
-       correct: req.body.correct,
-       answerQuestionid: answerID
-   };
-   databaseFunctions.createQuestion(question);
-   databaseFunctions.createAnswer(answer, res);
+    //Checking what button were pressed.
+    if(req.body.hasOwnProperty("button1")){
+        numberOfQuestions ++;
+        console.log("Quiz number added");
+    } else {
+        numberOfQuestions = 0;
+        console.log("Quiz number NOT added");
+    }
+    function createQuestion() {
+        // Collection data from question form and creating an array.
+        var question = {
+            question: req.body.question,
+            questionQuizid: stored_quizId
+        };
+        // Sending the question array to function for creating a query and sending to database
+        databaseFunctions.createQuestion(question);
+    };
+    function getQuestionId() {
+            connection.acquire(function (err, con) {
+            con.query('SELECT questionId FROM question ORDER BY questionId DESC LIMIT 1', function (err, questionIdRes) {
+                con.release();
+                if (err) {
+                    console.log(err)
+                } else {
+                    obj = JSON.parse(JSON.stringify(questionIdRes));
+                    obj.forEach(function (id) {
+                        stored_questionID = id.questionId;
+                        console.log("Stored questionId: " + stored_questionID);
+                    });
+                }
+            });
+        });
+    };
+    function createAnswrs() {
+        // Collection answers and if they are correct or not and save to an array.
+        var store_answers = req.body.answer;
+        var store_correct = req.body.correct;
 
+        //Looping trough answers and creating an object for each.
+        for (var o = 0; o < store_answers.length; o++) {
+            var answer = {
+                answer: store_answers[o],
+                correct: store_correct[o],
+                answerQuestionid: stored_questionID
+            };
+            answers.push(answer); //Pushing answer objects to answers array.
+        }
+        //Looping trough the answers and sending them to function for storing in database
+        for (var i = 0; i < answers.length; i++) {
+            databaseFunctions.createAnswer(answers[i]);
+        }
+};
+    function redirect() {
+        if(numberOfQuestions > 0) {
+            return res.redirect(req.get("referer"));
+        } else {
+            return res.redirect('/createquiz');
+        }
+    }
+
+    createQuestion();
+    setTimeout(getQuestionId, 500);
+    setTimeout(createAnswrs, 1000);
+    setTimeout(redirect, 1500);
+    answers = [];
 });
+
 
 // Start server on port 3000
 app.set('port', process.env.PORT || 3000); // use port 3000 unless there exists a preconfigured port

@@ -39,3 +39,5 @@ jspm_packages
 
 
 .idea
+.idea/workspace.xml
+*.xml

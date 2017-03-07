@@ -1,0 +1,20 @@
+<div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <h1>
+        <% loadQuizes.forEach(function (quizes) { %>
+            <h2><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
+        <% }) %>
+    </h1>
+    <form action="/takequiz/:id" method="POST">
+        <% quizQuestions.forEach(function (question) { %>
+            <div class="well well-sm">
+            <h3><%= question.question %></h3>
+            <% answers.forEach(function (ans) { %>
+            <% if (ans.answerQuestionid === question.questionId) { %>
+            <input type="checkbox" name="answer" id="><%= ans.answerId %>" value="><%= ans.correct %>"><%= ans.answer %><br>
+            <% } %>
+            <% }) %>
+        </div> <!-- well -->
+        <% }) %>
+        <input type="submit" class="btn btn-lg btn-success center-block" value="Submit">
+    </form> <!-- form -->
+</div> <!-- content -->

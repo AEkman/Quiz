@@ -15,19 +15,17 @@
         <p>Let's create some ultra cool quizes!</p>
         <p>You are on page <%= title %></p>
 
-        <form method="post"  action="/createQuiz">
+        <form method="post"  action="/createQuiz" id="createQuiz">
             <div class="form-group">
                 <% include partials/template/createquiz.ejs %>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-lg">Create Quiz</button>
+                <button type="submit" class="btn btn-default btn-lg center-block">Create Quiz</button>
             </div>
         </form>
     </div><!-- span12 -->
     <% include partials/template/footer.ejs %>
 </div><!-- container -->
-
-
 <% include partials/template/jsdefaults.ejs %>
 </body>
 </html>

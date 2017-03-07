@@ -7,9 +7,9 @@
                 <tr>
                     <th>Mail</th>
                     <th>Name</th>
-                    <th>Password</th>
                     <th>Groups</th>
                     <th>Account Level</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -17,9 +17,9 @@
                 <tr>
                     <td><%= user.mail %></td>
                     <td><%= user.name %></td>
-                    <td><%= user.password %></td>
                     <td><%= user.groups %></td>
                     <td><%= user.accountLevel %></td>
+                    <td><a><a href="/settings/:id"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
                 <% }) %>
                 </tbody>
