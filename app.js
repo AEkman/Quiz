@@ -1,13 +1,12 @@
 var express = require('express');
 var body = require('body-parser');
 var connection = require('./public/javascripts/mysqlconnection');
-var bodyparser = require('body-parser');
 var databaseFunctions = require('./public/javascripts/database');
 
 // Start express
 var app = express();
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(bodyparser.json());
+app.use(body.urlencoded({extended: true}));
+app.use(body.json());
 connection.init();
 
 // Set static folder
@@ -62,54 +61,24 @@ app.get('/profile', function(req, res) {
 
 /* Settings */
 app.get('/settings', function(req, res) {
-    res.render('settings', {
-        title: 'Settings',
-        classname: 'settings'
+    connection.acquire(function (err, con) {
+        con.query('SELECT * FROM user', function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                obj = JSON.parse(JSON.stringify(rows));
+                res.render('settings', {
+                    obj:obj,
+                    title: 'Settings',
+                    classname: 'settings'
+                });
+            }
+        });
     });
+
+
 });
-
-
-app.post('/settings', function(req, res) {
-    var user = {
-        mail: req.body.mail,
-        name: req.body.name,
-        password: req.body.password,
-        groups: req.body.groups,
-        accountLevel: req.body.accountLevel
-    };
-    databaseFunctions.createUser(user, res);
-});
-
-app.post('/createquiz', function (req, res) {
-    var question = {
-        answerId: req.body.answerId,
-        question: req.body.question
-    };
-    var answer = {
-        answerId: req.body.answerId,
-        answer: req.body.answer,
-        correct: req.body.correct
-    };
-    databaseFunctions.createQuestion(question, res);
-    databaseFunctions.createAnswer(answer, res);
-});
-
-// app.post('/question', function (req, res) {
-//     var question = {
-//         answerId: req.body.answerId,
-//         question: req.body.question
-//     };
-//     databaseFunctions.createQuestion(question, res);
-// });
-//
-// app.post('/answer', function (req, res) {
-//     var question = {
-//         answerId: req.body.answerId,
-//         answer: req.body.answer,
-//         correct: req.body.correct
-//     };
-//     databaseFunctions.createAnswer(question, res);
-// });
 
 /* User */
 app.get('/user', function(req, res) {
@@ -133,6 +102,52 @@ app.get('/admin', function(req, res) {
         title: 'Admin',
         classname: 'admin'
     });
+});
+
+app.get('/createquizquestions', function(req, res) {
+    res.render('createquizquestions', {
+        title: 'createquizquestions',
+        classname: 'createquizquestions'
+    });
+});
+
+/*  send the input data from settings --> createUser --> database */
+app.post('/settings', function(req, ress) {
+    var user = {
+        mail: req.body.mail,
+        name: req.body.name,
+        password: req.body.password,
+        groups: req.body.groups,
+        accountLevel: req.body.accountLevel
+    };
+    databaseFunctions.createUser(user, ress);
+});
+/*  send input data from Create quiz form */
+app.post('/createquiz', function (req, res) {
+    var quiz = {
+        quizName: req.body.quizName,
+        dateFinished: req.body.dateFinished,
+        times: req.body.times,
+        score: req.body.score
+    };
+    databaseFunctions.createQuiz(quiz, res);
+});
+var questionID = 1;
+var answerID = 1;
+
+app.post('/createquizquestions', function (req, res) {
+   var question = {
+       question: req.body.question,
+       questionQuizid: questionID
+   };
+   var answer = {
+       answer: req.body.answer,
+       correct: req.body.correct,
+       answerQuestionid: answerID
+   };
+   databaseFunctions.createQuestion(question);
+   databaseFunctions.createAnswer(answer, res);
+
 });
 
 // Start server on port 3000

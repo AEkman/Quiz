@@ -1,54 +1,58 @@
 $(document).ready(function(){
-console.log("I Jquery");
+ console.log("I Jquery");
+ //On button click get json from
+ $("#loginbtn").click(function(event){
+
+ //Get the email from login.ejs
+ var email = document.getElementById("email").value;
+
+ //Get password from login.ejs
+ var formpassword = document.getElementById("password").value;
+
+ //Dummydata
+ var dummydata = { "user" : [
+     { "mail" : "elev@mail.com", "password": "elev", "accountLevel" : "1"},
+     { "mail" : "teacher@mail.com", "password": "teacher", "accountLevel" : "2"},
+     {"mail" : "admin@mail.com", "password": "admin", "accountLevel" : "3"}
+     ] };
+
+ var dummyobj = JSON.stringify(dummydata);
+
+ console.log("Email from input  "+email);
+ console.log("Password from input  "+formpassword);
 
 
-//going to be used to store data from dummydata.json
-var data;
-    
-//Get the email from login.ejs
-var email = document.getElementById("email");
+     $.each(dummydata, function (data) {
+         $.each(data.user, function (key, val) {
+             var dummymail = this.mail;
+             var dummypassword = this.password;
 
-//Get password from login.ejs
-var password = document.getElementById("password");
+             if (email === dummymail)
+             {
+                 if (formpassword === dummypassword)
+                 {
 
-//Connect to the dummydata.json file
-    function readTextFile(file, callback) {
-        var rawFile = new XMLHttpRequest();
-        rawFile.overrideMimeType("application/json");
-        rawFile.open("GET", file, true);
-        rawFile.onreadystatechange = function() {
-            if (rawFile.readyState === 4 && rawFile.status == "200") {
-                callback(rawFile.responseText);
-            }
-        }
-        rawFile.send(null);
-    }
 
-//Read and get dummydata.json data.
-readTextFile("../dummydata", function(text){
-    data = JSON.parse(text);
-    console.log(data);
-    console.log('in read json file');
+                 }
+
+                 else
+                 {
+                     document.getElementById("err").innerHTML = "Login was unsuccessful, please check your password";
+                 }
+             }
+
+             else
+             {
+                 document.getElementById("err").innerHTML = "Login was unsuccessful, please check your username";
+                 event.preventDefault();
+             }
+
+
+
+         });
+     });
+
+
 });
-
-    //On button click get json from
-    $("#loginbtn").click(function(event){
-        console.log('email from form'+email+' password from form'+password);
-        //loop though the users and compare them with input from login.ejs
-        for (var i = 0; i < data.user[i].length; i++)
-        {
-            if ((email == data.user[i].mail) && (password == data.user[i].password))
-            {
-                console.log("success");
-            }
-
-            else
-            {
-                event.preventDefault();
-                alert ("Login was unsuccessful, please check your username and password");
-            }
-        }
-        event.preventDefault();
-    });
 
 });

@@ -1,6 +1,29 @@
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <h3 class="page-header"><a href="#col2viewusers" data-toggle="collapse">View Users</a></h3>
     <div id="col2viewusers" class="collapse">
-        <p>Create view users</p>
+        <div class="responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Mail</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Groups</th>
+                    <th>Account Level</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% obj.forEach(function (user) { %>
+                <tr>
+                    <td><%= user.mail %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.password %></td>
+                    <td><%= user.groups %></td>
+                    <td><%= user.accountLevel %></td>
+                </tr>
+                <% }) %>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
