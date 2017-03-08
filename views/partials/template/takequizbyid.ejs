@@ -15,7 +15,7 @@
         </div>
     </h1>
     <div id="answer"></div>
-    <form action="/takequiz/:id" method="POST" id="takequizform">
+    <form action="/takequiz/" method="POST" id="takequizform">
         <% quizQuestions.forEach(function (question) { %>
         <div class="well well-sm">
                 <h3><%= question.question %></h3>

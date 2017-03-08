@@ -109,14 +109,11 @@ app.get('/takequiz/:id', function(req, res) {
     });
 });
 
-app.post('/takequiz/:id', function(req, res) {
+app.post('/takequiz/', function(req, res) {
 
-    console.log(req.params.name);
-    var test444 = req.params.name;
+    var scored = req.body.stored_quizScore;
 
-    console.log(test444);
-
-    var postQuery = {quizTakenMail: stored_mail, QuizTakenQid: stored_currentQuizId , results: 5, elapTimes: 5};
+    var postQuery = {quizTakenMail: stored_mail, QuizTakenQid: stored_currentQuizId , results: scored, elapTimes: 5};
 
 
     connection.acquire(function (err, con) {
