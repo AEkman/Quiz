@@ -30,9 +30,9 @@ DROP TABLE IF EXISTS quiz;
 	score SMALLINT NOT NULL
 	);
 
-    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-03-03', 10, 20);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-04-03', 10, 20);
     INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Bergskedjor', '2017-03-03', 20, 20);
-	INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Klockor', '2017-03-03', 30, 20);
+	INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Klockor', '2018-03-03', 30, 20);
 
 DROP TABLE IF EXISTS question;
 	CREATE TABLE question(
@@ -95,5 +95,3 @@ DROP TABLE IF EXISTS quiztaken;
 	);
 
 	INSERT INTO quizTaken (quizTakenMail, QuizTakenQid, results, elapTimes) VALUES ("info@andreasekman.com",1,39,'10');
-
-select * from quiz;
