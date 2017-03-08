@@ -11,13 +11,9 @@ DROP TABLE IF EXISTS user;
 	accountLevel VARCHAR(255) NOT NULL
 	);
 
-	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("info@andreasekman.com", "Andreas Ekman", "12345" ,"Group 1", "Admin");
-	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("xtironman@hotmail.com", "Göran Person", "morot" ,"Group 2", "Creator");
-	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("424@sverige.nu", "Kalle Svensson", "gurka" ,"Group 3", "User");
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("admin@admin.se", "Admin Adminsson", "admin" ,"Group 1", "Admin");
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("creator@creator.se", "Creator Creatorson", "creator" ,"Group 2", "Creator");
 	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES("user@user.se", "User Usersson", "user" ,"Group 3", "User");
-	INSERT INTO user (mail,name, password, groups, accountLevel) VALUES('eric@andresen.codes', 'Eric Andresen', 'admin' ,'Masters', 'Admin');
 
 
 DROP TABLE IF EXISTS quiz;
@@ -30,9 +26,9 @@ DROP TABLE IF EXISTS quiz;
 	score SMALLINT NOT NULL
 	);
 
-    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-04-03', 10, 20);
-    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Bergskedjor', '2017-03-03', 20, 20);
-	INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Klockor', '2018-03-03', 30, 20);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Solution to everything', '2017-04-03', 10, 5);
+    INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Bergskedjor', '2017-03-03', 20, 2);
+	INSERT INTO quiz (quizName, dateFinished, times, score) VALUES ('Klockor', '2018-03-03', 30, 5);
 
 DROP TABLE IF EXISTS question;
 	CREATE TABLE question(
@@ -60,9 +56,9 @@ DROP TABLE IF EXISTS answers;
 	);
 
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Red");
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Green");
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,1,"Blue");
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Pink");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,2,"Green");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,5,"Blue");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,3,"Pink");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (1,0,"Red");
     INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,0,"Question 1 Answer 1");
     INSERT INTO answers (answerQuestionid,correct,answer) VALUES (2,1,"Question 1 Answer 2");
@@ -73,13 +69,13 @@ DROP TABLE IF EXISTS answers;
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (4,1,"201-KARAT CHOPARD");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (4,0,"PATEK PHILIPPE SUPERCOMPLICATION");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 150 år sedan");
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,1,"För 4000 år sedan");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,2,"För 4000 år sedan");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 3000 år sedan");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 2017 år sedan");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (5,0,"För 3500 år sedan");
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (6,1,"Rolex Submariner");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (6,3,"Rolex Submariner");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (6,0,"Omega-klocka");
-	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (7,1,"Omega-klocka");
+	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (7,3,"Omega-klocka");
 	INSERT INTO answers (answerQuestionid,correct,answer) VALUES (7,0,"Rolex Submariner");
 
 

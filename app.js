@@ -20,11 +20,6 @@ var stored_mail;
 var stored_quizId;
 var stored_currentQuizId;
 
-// Middleware to log all requests
-// app.use(function(req, res, next) {
-//     console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
-//     next();
-// });
 
 // Set static folder
 app.use(express.static(__dirname + '/public'));
@@ -177,14 +172,6 @@ app.get('/settings', function(req, res) {
             }
         });
     });
-});
-
-app.delete('/settings/:id', function(req, res) {
-    // sätt in query som variabel
-    // variabel = variabel.filter(function(definition) {
-    //     return definition.term.toLowerCase() !== req.params.term.toLowerCase();
-    // });
-    // res.query till databas(variabel);
 });
 
 /* User */

@@ -1,1 +1,0 @@
-{ "user" : [{ "mail" : "elev@mail.com", "name": "Elev", "password": "elev", "groups": "a1", "accountLevel" : "1"}, { "mail" : "teacher@mail.com", "name": "Teacher", "password": "teacher", "groups": "teacher", "accountLevel" : "2"}, {"mail" : "admin@mail.com", "name": "Admin", "password": "admin", "groups": "Admin", "accountLevel" : "3"} ] }
