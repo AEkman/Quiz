@@ -18,7 +18,7 @@ function recalculate(){
             obj.stored_quizScore --;
         }
     });
-    if(obj.stored_quizScore > stored_scoreToBeat) {
+    if(obj.stored_quizScore >= stored_scoreToBeat) {
         $(".replacewithresoult").replaceWith("<p> 'You Passed!' </p>").removeClass('hidden');
 
     } else {
