@@ -1,7 +1,7 @@
 <div class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <h1>
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <% loadQuizes.forEach(function (quizes) { %>
                     <h2 id="replacewithscore"><%= quizes.quizName %></h2> <!-- Load the name of quiz-->
                     <script language="JavaScript">
@@ -12,6 +12,10 @@
                 <% }) %>
             </div>
         <div class="col-md-2" id="countdown"></div>
+        <div class="col-md-2">
+            <% loadQuizes.forEach(function (quizScore) { %>
+                <p class="quizScore replacewithresoult hidden" id="<%= quizScore.score %>"><%= quizScore.score %></p>
+            <% }) %></div>
         </div>
     </h1>
     <div id="answer"></div>

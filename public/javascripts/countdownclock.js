@@ -1,7 +1,6 @@
 function countdown(minutes) {
 
     var seconds = 60;
-    var minutes;
     function downcount() {
         var counter = document.getElementById("countdown");
         var current_minutes = minutes-1;
@@ -18,5 +17,6 @@ function countdown(minutes) {
             window.location.replace("/results");
         }
     }
-    downcount();
+        downcount();
 }
+

@@ -10,7 +10,7 @@ app.use(body.json()); // Parses html data to JSON
 app.use(body.urlencoded({extended: true})); // If data is sent URL encoded, parse to JSON
 connection.init();
 
-//Instance variabels
+//Instance variables
 var stored_questionID;
 var answers = [];
 var numberOfQuestions = 0;
