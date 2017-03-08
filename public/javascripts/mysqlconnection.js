@@ -10,7 +10,8 @@ function Connection() {
             user: 'user',
             password : 'user',
             port: 3306,
-            database: 'quizdb'
+            database: 'quizdb',
+            dateStrings: 'date'
         });
     };
 
