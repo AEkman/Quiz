@@ -16,10 +16,9 @@ var answers = [];
 var numberOfQuestions = 0;
 var stored_password;
 var stored_accountLevel;
-var stored_mail = "info@andreasekman.com";
+var stored_mail;
 var stored_quizId;
-var stored_currentQuizId = 1;
-var stored_quizScore;
+var stored_currentQuizId;
 
 // Middleware to log all requests
 // app.use(function(req, res, next) {
@@ -112,9 +111,7 @@ app.get('/takequiz/:id', function(req, res) {
 app.post('/takequiz/', function(req, res) {
 
     var scored = req.body.stored_quizScore;
-
     var postQuery = {quizTakenMail: stored_mail, QuizTakenQid: stored_currentQuizId , results: scored, elapTimes: 5};
-
 
     connection.acquire(function (err, con) {
         con.query("INSERT INTO quizTaken SET ?", postQuery, function (err, rows) {
@@ -192,9 +189,20 @@ app.delete('/settings/:id', function(req, res) {
 
 /* User */
 app.get('/user', function(req, res) {
-    res.render('user', {
-        title: 'User',
-        classname: 'user'
+    connection.acquire(function (err, con) {
+        con.query('SELECT name FROM user WHERE mail = ?', stored_mail ,function (err, rows) {
+            con.release();
+            if(err) {
+                console.log(err);
+            } else {
+                user = JSON.parse(JSON.stringify(rows));
+                res.render('user', {
+                    title: 'User',
+                    user: user,
+                    classname: 'user'
+                });
+            }
+        });
     });
 });
 
